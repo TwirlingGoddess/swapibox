@@ -1,0 +1,17 @@
+* {
+  margin: 0 auto;
+  width: 100%;
+  font-family: lora;
+  text-align: center;
+}
+
+.header {
+  height: 150px;
+  padding: 20px;
+}
+
+.title {
+  font-size: 4rem;
+  text-shadow: 1px 1px #523F38;
+}
+
