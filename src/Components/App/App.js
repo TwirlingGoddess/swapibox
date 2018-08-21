@@ -29,22 +29,24 @@ class App extends Component {
       <div>
         <header className="header">
           <h1 className="title">SWAPIbox</h1>
-          <Button 
-            value='people' 
-            populateCards={this.populateCards}
-          />
-          <Button 
-            value='planets'
-            populateCards={this.populateCards}
-          />
-          <Button 
-            value='vehicles' 
-            populateCards={this.populateCards}
-          />
-          <Button 
-            value='favorites'
-            populateCards={this.populateCards}
-          />
+          <div className="button-box">
+            <Button 
+              value='people' 
+              populateCards={this.populateCards}
+            />
+            <Button 
+              value='planets'
+              populateCards={this.populateCards}
+            />
+            <Button 
+              value='vehicles' 
+              populateCards={this.populateCards}
+            />
+            <Button 
+              value='favorites'
+              populateCards={this.populateCards}
+            />
+          </div>
         </header>
         <Landing />
         <CategoryContainer stateArray={this.state.people}/>
