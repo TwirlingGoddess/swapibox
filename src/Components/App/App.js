@@ -6,24 +6,45 @@ import { CategoryContainer } from '../CategoryContainer/CategoryContainer';
 
 class App extends Component {
 	constructor() {
-		super()
+		super();
 
 		this.state = {
-      people: [],
+      people: ['Lee', 'Megan', 'Zoe'],
       planets: [],
       vehicles: [],
       favorites: []
 		}
 	}
+
+
+
+  populateCards = () => {
+    
+  }
+
+
+
   render() {
     return (
       <div>
         <header className="header">
           <h1 className="title">SWAPIbox</h1>
-          <Button value='people' />
-          <Button value='planets' />
-          <Button value='vehicles' />
-          <Button value='favorites' />
+          <Button 
+            value='people' 
+            populateCards={this.populateCards}
+          />
+          <Button 
+            value='planets'
+            populateCards={this.populateCards}
+          />
+          <Button 
+            value='vehicles' 
+            populateCards={this.populateCards}
+          />
+          <Button 
+            value='favorites'
+            populateCards={this.populateCards}
+          />
         </header>
         <Landing />
         <CategoryContainer stateArray={this.state.people}/>
