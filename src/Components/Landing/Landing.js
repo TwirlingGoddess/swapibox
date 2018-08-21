@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './Landing.css';
 // import a song here
 
@@ -11,11 +11,16 @@ class Landing extends Component {
 	}
 
 	componentDidMount = async () => {
-		const response = await fetch('https://swapi.co/api/films')
-		const reaction = await response.json()
-		const newVariable = this.fetchFilm(reaction.results)
-
-		// return promise.all(newVariable)
+		try {
+			const response = await fetch('https://swapi.co/api/films')
+			const reaction = await response.json()
+			const newVariable = await this.fetchFilm(reaction.results)
+			this.setState({
+				scrollText: newVariable[Math.floor(Math.random() * arrayOfFilmResults.length)]
+			})
+		} catch(error) {
+				console.log(error.message)
+		}
 	}
 
 	fetchFilm = (arrayOfFilmResults) => {
@@ -25,9 +30,7 @@ class Landing extends Component {
 			let title = film.title;
 			return Object.assign({}, 	{text: text}, {year: year}, {title: title})
 		})
-		this.setState({
-			scrollText: crawlText[Math.floor(Math.random() * arrayOfFilmResults.length)]
-		})
+		return Promise.all(crawlText)
 	}
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Landing from '../Landing/Landing';
+// import Landing from '../Landing/Landing';
 import Button from '../Buttons/Button';
 import { CategoryContainer } from '../CategoryContainer/CategoryContainer';
 
@@ -9,20 +9,34 @@ class App extends Component {
 		super();
 
 		this.state = {
-      people: ['Lee', 'Megan', 'Zoe'],
+      people: [],
       planets: [],
       vehicles: [],
       favorites: []
 		}
 	}
 
-
-
-  populateCards = () => {
-    
+  fetchData = async (value) => {
+    console.log(value)
+    try {
+      const url = `https://swapi.co/api/${value}`
+      const response = await fetch(url)
+      const data = await response.json()
+      const getData = await this.filterData(data)
+    } catch(error) {
+       console.log(error.message)
+    }
   }
 
 
+  populateCards = (event) => {
+    const {value} = event.target
+    if(`!this.state.${value}.length`) {
+      this.fetchData(value);
+     
+    }
+
+  }
 
   render() {
     return (
@@ -31,24 +45,24 @@ class App extends Component {
           <h1 className="title">SWAPIbox</h1>
           <div className="button-box">
             <Button 
-              value='people' 
+              value='People' 
               populateCards={this.populateCards}
             />
             <Button 
-              value='planets'
+              value='Planets'
               populateCards={this.populateCards}
             />
             <Button 
-              value='vehicles' 
+              value='Vehicles' 
               populateCards={this.populateCards}
             />
             <Button 
-              value='favorites'
+              value='Favorites'
               populateCards={this.populateCards}
             />
           </div>
         </header>
-        <Landing />
+        
         <CategoryContainer stateArray={this.state.people}/>
       </div>
     );
