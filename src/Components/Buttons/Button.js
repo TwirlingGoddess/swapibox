@@ -14,8 +14,9 @@ class Button extends Component {
 		return(
 			<button 
 				value={this.props.value} 
-				clicked={!this.state.clicked}>
-					{this.props.value}
+				clicked={!this.state.clicked}
+				onClick={this.props.populateCards}
+			>
 			</button>
 		);
 	}
