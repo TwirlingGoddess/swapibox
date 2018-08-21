@@ -34,11 +34,18 @@ class Landing extends Component {
 	render() {
 		const { year, title, text } = this.state.scrollText
 		return(
-			<article>
-				<p>{text}</p>
-				<h3>{title}</h3>
-				<h4>{year}</h4>
-			</article>
+			<div>
+				<div className="fade"></div>
+				<article className="star-wars">
+					<div className="crawl">
+						<div className="title">
+							<h1>{title}</h1>
+							<p>{year}</p>
+						</div>
+						<p>{text}</p>
+					</div>
+				</article>
+			</div>
 		)
 	}
 }
