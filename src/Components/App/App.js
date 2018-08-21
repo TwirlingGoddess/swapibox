@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Landing from '../Landing/Landing';
 import Button from '../Buttons/Button';
+import { CategoryContainer } from '../CategoryContainer/CategoryContainer';
 
 class App extends Component {
 	constructor() {
@@ -19,12 +20,13 @@ class App extends Component {
       <div>
         <header className="header">
           <h1 className="title">SWAPIbox</h1>
-          <Button value={this.state.people} />
-          <Button value={this.state.planets} />
-          <Button value={this.state.vehicles} />
-          <Button value={this.state.favorites} />
+          <Button value='people' />
+          <Button value='planets' />
+          <Button value='vehicles' />
+          <Button value='favorites' />
         </header>
         <Landing />
+        <CategoryContainer stateArray={this.state.people}/>
       </div>
     );
   }
