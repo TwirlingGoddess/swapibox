@@ -16,28 +16,35 @@ class App extends Component {
 		}
 	}
 
+  populateCards = (event) => {
+    const {value} = event.target
+    if(`!this.state.${value}.length`) {
+      this.fetchData(value);
+    }
+  }
+
   fetchData = async (value) => {
     try {
       const url = `https://swapi.co/api/${value}/`
       console.log(url)
       const response = await fetch(url)
       const data = await response.json()
-    console.log(data)
-      // const getData = await this.filterData(data)
+      const getData = await this.filterData(data.results)
+      this.setState({
+        [value]: getData
+      })
     } catch(error) {
       console.log(error.message)
     }
   }
 
-
-  populateCards = (event) => {
-    const {value} = event.target
-    if(`!this.state.${value}.length`) {
-      this.fetchData(value);
-     
-    }
-
+  filterData = (cardItems) => {
+    const characterName = cardItems.map(async card => card.name)
+    return Promise.all(characterName)
   }
+  
+
+
 
   render() {
     return (
@@ -59,7 +66,7 @@ class App extends Component {
             />
             <Button 
               value='favorites'
-              populateCards={this.populateCards}
+              // populateCards={this.populateCards}
             />
           </div>
         </header>
