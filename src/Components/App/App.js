@@ -17,14 +17,15 @@ class App extends Component {
 	}
 
   fetchData = async (value) => {
-    console.log(value)
     try {
-      const url = `https://swapi.co/api/${value}`
+      const url = `https://swapi.co/api/${value}/`
+      console.log(url)
       const response = await fetch(url)
       const data = await response.json()
-      const getData = await this.filterData(data)
+    console.log(data)
+      // const getData = await this.filterData(data)
     } catch(error) {
-       console.log(error.message)
+      console.log(error.message)
     }
   }
 
@@ -45,19 +46,19 @@ class App extends Component {
           <h1 className="title">SWAPIbox</h1>
           <div className="button-box">
             <Button 
-              value='People' 
+              value='people' 
               populateCards={this.populateCards}
             />
             <Button 
-              value='Planets'
+              value='planets'
               populateCards={this.populateCards}
             />
             <Button 
-              value='Vehicles' 
+              value='vehicles' 
               populateCards={this.populateCards}
             />
             <Button 
-              value='Favorites'
+              value='favorites'
               populateCards={this.populateCards}
             />
           </div>
