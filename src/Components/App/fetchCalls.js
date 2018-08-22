@@ -30,3 +30,14 @@ export const fetchSpecies = async (url) => {
     console.log(error.message)
   }
 }
+
+// export const fetchPlanets = async (url) => {
+//   try {
+//     const response = await fetch(url)
+//     const planetData = await response.json()
+//     console.log(planetData)
+//     return
+//   } catch(error) {
+
+//   }
+// }
