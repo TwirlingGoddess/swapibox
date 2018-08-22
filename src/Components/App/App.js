@@ -3,14 +3,14 @@ import './App.css';
 import Landing from '../Landing/Landing';
 import Button from '../Buttons/Button';
 import { CategoryContainer } from '../CategoryContainer/CategoryContainer';
-import { fetchData } from '../App/fetchCalls.js'
-let currentClick
+import { fetchData, fetchHome, fetchSpecies } from '../App/fetchCalls.js'
 
 class App extends Component {
 	constructor() {
 		super();
 
 		this.state = {
+      displayedCards: [],
       people: [],
       planets: [],
       vehicles: [],
@@ -24,9 +24,6 @@ class App extends Component {
 		}
 	}
 
-  componentDidMount() {
-  }
-
   populateCards = async (event) => {
     const {value} = event.target
     if(`!this.state.${value}.length`) {
@@ -34,19 +31,25 @@ class App extends Component {
       const getData = await this.filterData(data.results)
       this.setState({
         [value]: getData,
-        buttons: {[value]: true}
+        buttons: {[value]: true},
       })
-      currentClick = value
-      return currentClick
     }
-    // if(`this.state.${value}.length`) {
-
-    // }
+      this.setState({
+        displayedCards: this.state[value]
+      })
   }
 
   filterData = (cardItems) => {
-      console.log(cardItems)
-    const characterName = cardItems.map(async card => card.name)
+    const characterName = cardItems.map(async card => {
+      const name = card.name
+      const homeSearch = await fetchHome(card.homeworld)
+      const species = await fetchSpecies(card.species)
+      const homeworld = homeSearch.homeworld
+      const population = homeSearch.population
+      const personObj = await {name, species, homeworld, population}
+      console.log(personObj)
+      return personObj
+    })
     return Promise.all(characterName)
   }
   
@@ -81,9 +84,9 @@ class App extends Component {
             />
           </div>
         </header>
+        <CategoryContainer stateArray={this.state.displayedCards}/>
         {this.state.landing &&
         <Landing removeLanding={this.removeLanding}/>}
-        <CategoryContainer stateArray={[]}/>
       </div>
     )
   }

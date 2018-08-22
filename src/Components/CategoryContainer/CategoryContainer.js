@@ -1,9 +1,10 @@
 import React from 'react';
 import './CategoryContainer.css';
 import { Card } from '../Card/Card';
+import PropTypes from 'prop-types';
 
-export const CategoryContainer = (props) => {
-	const cardArray = props.stateArray.map(item => {
+export const CategoryContainer = ({stateArray}) => {
+	const cardArray = stateArray.map(item => {
 		return(
 			<Card
 				{...item}
@@ -19,3 +20,6 @@ export const CategoryContainer = (props) => {
 	)
 }
 
+CategoryContainer.propTypes = {
+	stateArray: PropTypes.array
+}
