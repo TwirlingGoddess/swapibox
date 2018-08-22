@@ -65,15 +65,23 @@ class App extends Component {
   }
 
   filterPlanets = (cardItems) => {
-    const planetName = cardItems.map(async planet => {
-      console.log(planet)
+    const planetName = cardItems.map(async card => {
+    console.log(card)
+    const planet = planetData.name
+    const terrain = planetData.terrain
+    const population = planetData.population
+    const climate = planetData.climate 
+    return card
     })
+    return Promise.all(planetName)
   }
 
   filterVehicles = (cardItems) => {
-    const vehicleName = cardItems.map(async vehicle => {
-      console.log(vehicle)
+    const vehicleName = cardItems.map(async card => {
+      console.log(card)
+      return card
     })
+    return Promise.all(vehicleName)
   }
 
 

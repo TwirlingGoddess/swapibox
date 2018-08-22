@@ -4,6 +4,7 @@ import { Card } from '../Card/Card';
 import PropTypes from 'prop-types';
 
 export const CategoryContainer = ({stateArray}) => {
+	
 	const cardArray = stateArray.map(item => {
 		return(
 			<Card

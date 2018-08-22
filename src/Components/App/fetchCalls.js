@@ -1,7 +1,6 @@
 export const fetchData = async (value) => {
     try {
       const url = `https://swapi.co/api/${value}/`
-      console.log(url)
       const response = await fetch(url)
       const data = await response.json()
 	  return data
@@ -31,13 +30,15 @@ export const fetchSpecies = async (url) => {
   }
 }
 
-// export const fetchPlanets = async (url) => {
-//   try {
-//     const response = await fetch(url)
-//     const planetData = await response.json()
-//     console.log(planetData)
-//     return
-//   } catch(error) {
-
-//   }
-// }
+export const fetchPlanets = async (url) => {
+  try {
+    const response = await fetch(url)
+    const planetData = await response.json()
+    console.log(planetData)
+     
+    // console.log(planetObj)
+    return planetObj
+  } catch(error) {
+    console.log(error.message)
+  }
+}
