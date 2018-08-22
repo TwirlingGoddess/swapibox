@@ -7,12 +7,12 @@ export const CategoryContainer = (props) => {
 		return(
 			<Card
 				{...item}
-				key={item.id}
+				key={Date.now() * Math.random()}
 			/>)
 	})
 
 	return(
-		<div>
+		<div className="Container">
 			{cardArray}
 		</div>
 
