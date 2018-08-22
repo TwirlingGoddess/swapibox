@@ -4,6 +4,7 @@ import Landing from '../Landing/Landing';
 import Button from '../Buttons/Button';
 import { CategoryContainer } from '../CategoryContainer/CategoryContainer';
 import { fetchData } from '../App/fetchCalls.js'
+let currentClick
 
 class App extends Component {
 	constructor() {
@@ -32,9 +33,15 @@ class App extends Component {
       const data = await fetchData(value)
       const getData = await this.filterData(data.results)
       this.setState({
-        [value]: getData
+        [value]: getData,
+        buttons: {[value]: true}
       })
+      currentClick = value
+      return currentClick
     }
+    // if(`this.state.${value}.length`) {
+
+    // }
   }
 
   filterData = (cardItems) => {
@@ -76,7 +83,7 @@ class App extends Component {
         </header>
         {this.state.landing &&
         <Landing removeLanding={this.removeLanding}/>}
-        <CategoryContainer stateArray={this.state.people}/>
+        <CategoryContainer stateArray={[]}/>
       </div>
     )
   }

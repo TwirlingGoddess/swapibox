@@ -1,0 +1,13 @@
+.Card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	height: 13rem;
+	width: 12rem;
+	border: 1.5px solid pink;
+	border-radius: 9px 9px;
+	overflow: hidden;
+	cursor: pointer;
+	margin-bottom: 1rem;
+}
