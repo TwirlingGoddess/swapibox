@@ -2,8 +2,9 @@ import React from 'react';
 import './CategoryContainer.css';
 import { Card } from '../Card/Card';
 
-export const CategoryContainer = (props) => {
-	const cardArray = props.stateArray.map(item => {
+export const CategoryContainer = ({stateArray}) => {
+	const cardArray = stateArray.map(item => {
+		console.log('working')
 		return(
 			<Card
 				{...item}

@@ -11,6 +11,7 @@ class App extends Component {
 		super();
 
 		this.state = {
+      displayedCards: [],
       people: [],
       planets: [],
       vehicles: [],
@@ -24,9 +25,6 @@ class App extends Component {
 		}
 	}
 
-  componentDidMount() {
-  }
-
   populateCards = async (event) => {
     const {value} = event.target
     if(`!this.state.${value}.length`) {
@@ -34,18 +32,15 @@ class App extends Component {
       const getData = await this.filterData(data.results)
       this.setState({
         [value]: getData,
-        buttons: {[value]: true}
+        buttons: {[value]: true},
       })
-      currentClick = value
-      return currentClick
     }
-    // if(`this.state.${value}.length`) {
-
-    // }
+      this.setState({
+        displayedCards: this.state[value]
+      })
   }
 
   filterData = (cardItems) => {
-      console.log(cardItems)
     const characterName = cardItems.map(async card => card.name)
     return Promise.all(characterName)
   }
@@ -81,9 +76,9 @@ class App extends Component {
             />
           </div>
         </header>
+        <CategoryContainer stateArray={this.state.displayedCards}/>
         {this.state.landing &&
         <Landing removeLanding={this.removeLanding}/>}
-        <CategoryContainer stateArray={[]}/>
       </div>
     )
   }
