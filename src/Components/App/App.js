@@ -3,8 +3,7 @@ import './App.css';
 import Landing from '../Landing/Landing';
 import Button from '../Buttons/Button';
 import { CategoryContainer } from '../CategoryContainer/CategoryContainer';
-import { fetchData } from '../App/fetchCalls.js'
-let currentClick
+import { fetchData, fetchHome, fetchSpecies } from '../App/fetchCalls.js'
 
 class App extends Component {
 	constructor() {
@@ -41,7 +40,16 @@ class App extends Component {
   }
 
   filterData = (cardItems) => {
-    const characterName = cardItems.map(async card => card.name)
+    const characterName = cardItems.map(async card => {
+      const name = card.name
+      const homeSearch = await fetchHome(card.homeworld)
+      const species = await fetchSpecies(card.species)
+      const homeworld = homeSearch.homeworld
+      const population = homeSearch.population
+      const personObj = await {name, species, homeworld, population}
+      console.log(personObj)
+      return personObj
+    })
     return Promise.all(characterName)
   }
   
