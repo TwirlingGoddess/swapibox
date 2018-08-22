@@ -1,0 +1,12 @@
+.button-box {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin: 1rem 0;
+}
+
+.button-box button {
+	width: 10rem;
+	height: 5rem;
+}

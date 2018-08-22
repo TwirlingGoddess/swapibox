@@ -3,8 +3,8 @@ import './Landing.css';
 // import a song here
 
 class Landing extends Component {
-	constructor() {
-		super() 
+	constructor(props) {
+		super(props) 
 		this.state = {
 			scrollText: {}
 		}
@@ -16,7 +16,7 @@ class Landing extends Component {
 			const reaction = await response.json()
 			const newVariable = await this.fetchFilm(reaction.results)
 			this.setState({
-				scrollText: newVariable[Math.floor(Math.random() * arrayOfFilmResults.length)]
+				scrollText: newVariable[Math.floor(Math.random() * reaction.results.length)]
 			})
 		} catch(error) {
 				console.log(error.message)
@@ -37,7 +37,7 @@ class Landing extends Component {
 	render() {
 		const { year, title, text } = this.state.scrollText
 		return(
-			<div>
+			<div onClick={this.props.removeLanding}>
 				<div className="fade"></div>
 				<article className="star-wars">
 					<div className="crawl">
@@ -46,6 +46,8 @@ class Landing extends Component {
 							<p>{year}</p>
 						</div>
 						<p>{text}</p>
+						<div className="orange">NOW</div>
+						<h1 className="red">CLICK HERE ON THE SCREEN</h1>
 					</div>
 				</article>
 			</div>
