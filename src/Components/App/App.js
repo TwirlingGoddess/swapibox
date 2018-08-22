@@ -11,6 +11,7 @@ class App extends Component {
 
 		this.state = {
       displayedCards: [],
+      currentlyDisplayed: '',
       people: [],
       planets: [],
       vehicles: [],
@@ -36,6 +37,7 @@ class App extends Component {
     }
       this.setState({
         displayedCards: this.state[value]
+        currentlyDisplayed: [value]
       })
   }
 
@@ -84,7 +86,8 @@ class App extends Component {
             />
           </div>
         </header>
-        <CategoryContainer stateArray={this.state.displayedCards}/>
+        <CategoryContainer stateArray={this.state.displayedCards}
+                            currentlyDisplayed={this.state.currentlyDisplayed}/>
         {this.state.landing &&
         <Landing removeLanding={this.removeLanding}/>}
       </div>
