@@ -15,8 +15,9 @@ class Button extends Component {
 			<button 
 				value={this.props.value} 
 				clicked={!this.state.clicked}
-				onClick={this.props.populateCards}
+				onClick={this.props.populateCards} 
 			>
+				{this.props.value}
 			</button>
 		);
 	}
