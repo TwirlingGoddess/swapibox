@@ -3,7 +3,7 @@ import './Card.css';
 import PropTypes from 'prop-types';
 
 export const Card = ({name, species, homeworld, population, terrain, climate, residents, model, carClass, passengers}) => {
-	if(props.state.currentlyDisplayed === 'people'){
+	{props.currentlyDisplayed === 'people' &&
 		return(
 			<div className="Card">
 				<h4>{name}</h4>
@@ -15,7 +15,7 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
 			</div>
 		)
 	}
-	if(props.state.currentlyDisplayed === 'planets'){
+	{props.currentlyDisplayed === 'planets' &&
 		return(
 			<div className="Card">
 				<h4>{name}</h4>
@@ -28,7 +28,7 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
 			</div>
 		)
 	}
-	if(props.state.currentlyDisplayed === 'vehicles'){
+	{props.currentlyDisplayed === 'vehicles' &&
 		return(
 			<div className="Card">
 				<h4>{name}</h4>
