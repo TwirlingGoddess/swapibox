@@ -9,9 +9,9 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
 			<div className="Card">
 				<h4>{name}</h4>
 				<hr/>
-				<h5>{species}</h5>
-				<h5>{homeworld}</h5>
-				<h5>{population}</h5>
+				<h5>Species: {species}</h5>
+				<h5>Homeworld: {homeworld}</h5>
+				<h5>Popuation: {population}</h5>
 				<button>Fav</button>
 			</div>
 		);
@@ -22,10 +22,10 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
 			<div className="Card">
 				<h4>{name}</h4>
 				<hr/>
-				<h5>{terrain}</h5>
-				<h5>{population}</h5>
-				<h5>{climate}</h5>
-				<h5>{residents}</h5>
+				<h5>Terrain: {terrain}</h5>
+				<h5>Population: {population}</h5>
+				<h5>Climate: {climate}</h5>
+				<h5>Residents: {residents}</h5>
 				<button>Fav</button>
 			</div>
 		)
@@ -36,9 +36,9 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
 			<div className="Card">
 				<h4>{name}</h4>
 				<hr/>
-				<h5>{model}</h5>
-				<h5>{vehicle_class}</h5>
-				<h5>{passengers}</h5>
+				<h5>Model: {model}</h5>
+				<h5>Class: {vehicle_class}</h5>
+				<h5>Passengers: {passengers}</h5>
 				<button>Fav</button>
 			</div>
 		)
