@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryContainer from './CategoryContainer';
+import { CategoryContainer } from './CategoryContainer';
 import { shallow } from 'enzyme';
 
 describe('CategoryContainer', () => {
@@ -12,5 +12,7 @@ describe('CategoryContainer', () => {
   it('matches the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('')
 
 });
