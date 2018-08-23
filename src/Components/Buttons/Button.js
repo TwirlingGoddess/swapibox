@@ -1,15 +1,21 @@
 import React from 'react';
-import './Button.css'
+import './Button.css';
+import PropTypes from 'prop-types';
 
 const Button = (props) => {
-	return(
-		<button 
-			value={props.value} 
-			onClick={props.populateCards} 
-		>
-			{props.value}
-		</button>
-	);
-}
+  return (
+    <button 
+      value={props.value} 
+      onClick={props.populateCards} 
+    >
+      {props.value}
+    </button>
+  );
+};
 
-export default Button
+export default Button;
+
+Button.propTypes = {
+  value: PropTypes.string,
+  populateCards: PropTypes.func
+};
