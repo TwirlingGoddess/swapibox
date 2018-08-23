@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Landing.css';
+import { firstFetch } from '../App/fetchCalls';
 import PropTypes from 'prop-types';
 // import a song here
 
@@ -12,16 +13,12 @@ class Landing extends Component {
   }
 
   componentDidMount = async () => {
-    try {
-      const response = await fetch('https://swapi.co/api/films');
-      const reaction = await response.json();
-      const newVariable = await this.fetchFilm(reaction.results);
-      this.setState({
-        scrollText: newVariable[Math.floor(Math.random() * reaction.results.length)]
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
+    const url = 'https://swapi.co/api/films';
+    const reaction = await firstFetch(url);
+    const newVariable = await this.fetchFilm(reaction.results);
+    this.setState({
+      scrollText: newVariable[Math.floor(Math.random() * reaction.results.length)]
+    });
   }
 
   fetchFilm = (arrayOfFilmResults) => {
@@ -55,9 +52,8 @@ class Landing extends Component {
   }
 }
 
-Landing.propTypes = {
-  year: PropTypes.string,
   title: PropTypes.string,
+  year: PropTypes.string,
   text: PropTypes.string,
   removeLanding: PropTypes.func
 };
