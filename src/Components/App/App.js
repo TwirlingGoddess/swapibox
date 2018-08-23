@@ -3,7 +3,7 @@ import './App.css';
 import Landing from '../Landing/Landing';
 import Button from '../Buttons/Button';
 import { CategoryContainer } from '../CategoryContainer/CategoryContainer';
-import { fetchData, fetchHome, fetchSpecies } from '../App/fetchCalls.js'
+import { fetchData, fetchHome, fetchSpecies, fetchResidents } from '../App/fetchCalls.js'
 
 class App extends Component {
 	constructor() {
@@ -45,7 +45,7 @@ class App extends Component {
       })
     }
       this.setState({
-        displayedCards: this.state[value]
+        displayedCards: this.state[value],
         currentlyDisplayed: [value]
       })
   }
@@ -58,7 +58,6 @@ class App extends Component {
       const homeworld = homeSearch.homeworld
       const population = homeSearch.population
       const personObj = await {name, species, homeworld, population}
-      console.log(personObj)
       return personObj
     })
     return Promise.all(characterName)
@@ -66,12 +65,13 @@ class App extends Component {
 
   filterPlanets = (cardItems) => {
     const planetName = cardItems.map(async card => {
-    console.log(card)
-    const planet = planetData.name
-    const terrain = planetData.terrain
-    const population = planetData.population
-    const climate = planetData.climate 
-    return card
+      const name = card.name
+      const terrain = card.terrain
+      const population = card.population
+      const climate = card.climate 
+      const residents = await fetchResidents(card.residents)
+      const planetObj = await {name, terrain, population, climate, residents}
+      return planetObj
     })
     return Promise.all(planetName)
   }

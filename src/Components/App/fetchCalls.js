@@ -30,14 +30,11 @@ export const fetchSpecies = async (url) => {
   }
 }
 
-export const fetchPlanets = async (url) => {
+export const fetchResidents = async (url) => {
   try {
     const response = await fetch(url)
-    const planetData = await response.json()
-    console.log(planetData)
-     
-    // console.log(planetObj)
-    return planetObj
+    const residentData = await response.json()
+    return residentData.name
   } catch(error) {
     console.log(error.message)
   }
