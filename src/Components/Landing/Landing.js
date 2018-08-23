@@ -31,7 +31,6 @@ class Landing extends Component {
     return Promise.all(crawlText);
   }
 
-
   render() {
     const { year, title, text } = this.state.scrollText;
     return (
@@ -53,7 +52,6 @@ class Landing extends Component {
   }
 }
 
-Landing.propTypes = {
   title: PropTypes.string,
   year: PropTypes.string,
   text: PropTypes.string,

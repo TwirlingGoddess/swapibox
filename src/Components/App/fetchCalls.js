@@ -1,3 +1,4 @@
+
 export const firstFetch = async (url) => { 
   try {
     const response = await fetch(url)
@@ -20,36 +21,39 @@ export const fetchData = async (value) => {
 }
 
 export const fetchHome = async (url) => {
-  try{
-    const response = await fetch(url)
-    const homeData = await response.json()
-    const homeObj = { homeworld: homeData.name, population: homeData.population }
-    return homeObj
-  } catch(error) {
-    console.log(error.message)
+  try {
+    const response = await fetch(url);
+    const homeData = await response.json();
+    const homeObj = { 
+      homeworld: homeData.name, 
+      population: homeData.population 
+    };
+    return homeObj;
+  } catch (error) {
+    console.log(error.message);
   }
-}
+};
 
 export const fetchSpecies = async (url) => {
-  try{
-    const response = await fetch(url)
-    const speciesData = await response.json()
-    return speciesData.name
-  } catch(error) {
-    console.log(error.message)
+  try {
+    const response = await fetch(url);
+    const speciesData = await response.json();
+    return speciesData.name;
+  } catch (error) {
+    console.log(error.message);
   }
-}
+};
 
 export const fetchResidents = (urlArray) => {
   
   try { 
     const residentNames = urlArray.map(async url => {
-      const response = await fetch(url)
-      const residentData = await response.json()
-      return residentData.name
-    })
-    return Promise.all(residentNames)
-  } catch(error) {
-    console.log(error.message)
+      const response = await fetch(url);
+      const residentData = await response.json();
+      return residentData.name;
+    });
+    return Promise.all(residentNames);
+  } catch (error) {
+    console.log(error.message);
   }
-}
+};
