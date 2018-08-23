@@ -1,0 +1,426 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matches the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <App />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <header
+          className="header"
+>
+          <h1
+                    className="title"
+          >
+                    SWAPIbox
+          </h1>
+          <div
+                    className="button-box"
+          >
+                    <Button
+                              populateCards={[Function]}
+                              value="people"
+                    />
+                    <Button
+                              populateCards={[Function]}
+                              value="planets"
+                    />
+                    <Button
+                              populateCards={[Function]}
+                              value="vehicles"
+                    />
+                    <Button
+                              value="favorites"
+                    />
+          </div>
+</header>,
+        <Unknown
+          currentlyDisplayed=""
+          stateArray={Array []}
+/>,
+        <Landing
+          removeLanding={[Function]}
+/>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h1
+              className="title"
+>
+              SWAPIbox
+</h1>,
+            <div
+              className="button-box"
+>
+              <Button
+                            populateCards={[Function]}
+                            value="people"
+              />
+              <Button
+                            populateCards={[Function]}
+                            value="planets"
+              />
+              <Button
+                            populateCards={[Function]}
+                            value="vehicles"
+              />
+              <Button
+                            value="favorites"
+              />
+</div>,
+          ],
+          "className": "header",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "SWAPIbox",
+              "className": "title",
+            },
+            "ref": null,
+            "rendered": "SWAPIbox",
+            "type": "h1",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Button
+                  populateCards={[Function]}
+                  value="people"
+/>,
+                <Button
+                  populateCards={[Function]}
+                  value="planets"
+/>,
+                <Button
+                  populateCards={[Function]}
+                  value="vehicles"
+/>,
+                <Button
+                  value="favorites"
+/>,
+              ],
+              "className": "button-box",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "populateCards": [Function],
+                  "value": "people",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "populateCards": [Function],
+                  "value": "planets",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "populateCards": [Function],
+                  "value": "vehicles",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "value": "favorites",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "header",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "currentlyDisplayed": "",
+          "stateArray": Array [],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "removeLanding": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <header
+            className="header"
+>
+            <h1
+                        className="title"
+            >
+                        SWAPIbox
+            </h1>
+            <div
+                        className="button-box"
+            >
+                        <Button
+                                    populateCards={[Function]}
+                                    value="people"
+                        />
+                        <Button
+                                    populateCards={[Function]}
+                                    value="planets"
+                        />
+                        <Button
+                                    populateCards={[Function]}
+                                    value="vehicles"
+                        />
+                        <Button
+                                    value="favorites"
+                        />
+            </div>
+</header>,
+          <Unknown
+            currentlyDisplayed=""
+            stateArray={Array []}
+/>,
+          <Landing
+            removeLanding={[Function]}
+/>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h1
+                className="title"
+>
+                SWAPIbox
+</h1>,
+              <div
+                className="button-box"
+>
+                <Button
+                                populateCards={[Function]}
+                                value="people"
+                />
+                <Button
+                                populateCards={[Function]}
+                                value="planets"
+                />
+                <Button
+                                populateCards={[Function]}
+                                value="vehicles"
+                />
+                <Button
+                                value="favorites"
+                />
+</div>,
+            ],
+            "className": "header",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "SWAPIbox",
+                "className": "title",
+              },
+              "ref": null,
+              "rendered": "SWAPIbox",
+              "type": "h1",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <Button
+                    populateCards={[Function]}
+                    value="people"
+/>,
+                  <Button
+                    populateCards={[Function]}
+                    value="planets"
+/>,
+                  <Button
+                    populateCards={[Function]}
+                    value="vehicles"
+/>,
+                  <Button
+                    value="favorites"
+/>,
+                ],
+                "className": "button-box",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "populateCards": [Function],
+                    "value": "people",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "populateCards": [Function],
+                    "value": "planets",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "populateCards": [Function],
+                    "value": "vehicles",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "value": "favorites",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "header",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "currentlyDisplayed": "",
+            "stateArray": Array [],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "removeLanding": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;
