@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Landing.css';
+import { firstFetch } from '../App/fetchCalls'
 // import a song here
 
 class Landing extends Component {
@@ -11,19 +12,18 @@ class Landing extends Component {
 	}
 
 	componentDidMount = async () => {
-		try {
-			const response = await fetch('https://swapi.co/api/films')
-			const reaction = await response.json()
-			const newVariable = await this.fetchFilm(reaction.results)
-			this.setState({
-				scrollText: newVariable[Math.floor(Math.random() * reaction.results.length)]
-			})
-		} catch(error) {
-				console.log(error.message)
-		}
+		const url = 'https://swapi.co/api/films'
+		const reaction = await firstFetch(url)
+		console.log(reaction)
+	    const newVariable = await this.fetchFilm(reaction.results)
+	    console.log(newVariable)
+	    this.setState({
+	      scrollText: newVariable[Math.floor(Math.random() * reaction.results.length)]
+	    })
 	}
 
 	fetchFilm = (arrayOfFilmResults) => {
+		console.log(arrayOfFilmResults)
 		const crawlText = arrayOfFilmResults.map(film => {
 			let text = film.opening_crawl;
 			let year = film.release_date;
