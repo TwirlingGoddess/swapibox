@@ -1,26 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Button.css'
 
-class Button extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			clicked: false
-		}
-	}
-
-	render() {
-		return(
-			<button 
-				value={this.props.value} 
-				clicked={!this.state.clicked}
-				onClick={this.props.populateCards} 
-			>
-				{this.props.value}
-			</button>
-		);
-	}
+const Button = (props) => {
+	return(
+		<button 
+			value={props.value} 
+			onClick={props.populateCards} 
+		>
+			{props.value}
+		</button>
+	);
 }
 
 export default Button

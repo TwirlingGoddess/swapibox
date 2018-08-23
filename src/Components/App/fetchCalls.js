@@ -30,13 +30,18 @@ export const fetchSpecies = async (url) => {
   }
 }
 
-export const fetchResidents = async (url) => {
+export const fetchResidents = (urlArray) => {
   
-  try {
-    const response = await fetch(url)
-    const residentData = await response.json()
-    return residentData.name
+  try { 
+    const residentNames = urlArray.map(async url => {
+      const response = await fetch(url)
+      const residentData = await response.json()
+      return residentData.name
+    })
+    return Promise.all(residentNames)
   } catch(error) {
     console.log(error.message)
   }
+
+
 }

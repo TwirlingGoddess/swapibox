@@ -69,8 +69,10 @@ class App extends Component {
       const terrain = card.terrain
       const population = card.population
       const climate = card.climate 
-      const residents = await fetchResidents(card.residents)
+      const residentResults = await fetchResidents(card.residents)
+      const residents = [...residentResults]
       const planetObj = await {name, terrain, population, climate, residents}
+      console.log(planetObj)
       return planetObj
     })
     return Promise.all(planet)
