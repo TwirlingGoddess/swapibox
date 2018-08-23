@@ -46,7 +46,7 @@ class App extends Component {
     }
       this.setState({
         displayedCards: this.state[value],
-        currentlyDisplayed: [value]
+        currentlyDisplayed: value
       })
   }
 
@@ -78,20 +78,20 @@ class App extends Component {
 
   filterVehicles = (cardItems) => {
     const vehicleName = cardItems.map(async card => {
-      console.log(card)
+      const name = card.name
+      const model = card.model
+      const vehicle_class = card.vehicle_class
+      const passengers = card.passengers
       return card
     })
     return Promise.all(vehicleName)
   }
-
-
   
   removeLanding = () => {
     this.setState({
       landing: false
     })
   }
-
 
   render() {
     return(
