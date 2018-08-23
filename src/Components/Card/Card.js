@@ -18,7 +18,6 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
 	}
 
 	if(currentlyDisplayed==='planets') {
-		console.log(currentlyDisplayed)
 		return(
 			<div className="Card">
 				<h4>{name}</h4>

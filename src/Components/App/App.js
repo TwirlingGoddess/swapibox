@@ -51,7 +51,7 @@ class App extends Component {
   }
 
   filterPeople = (cardItems) => {
-    const characterName = cardItems.map(async card => {
+    const character = cardItems.map(async card => {
       const name = card.name
       const homeSearch = await fetchHome(card.homeworld)
       const species = await fetchSpecies(card.species)
@@ -60,11 +60,11 @@ class App extends Component {
       const personObj = await {name, species, homeworld, population}
       return personObj
     })
-    return Promise.all(characterName)
+    return Promise.all(character)
   }
 
   filterPlanets = (cardItems) => {
-    const planetName = cardItems.map(async card => {
+    const planet = cardItems.map(async card => {
       const name = card.name
       const terrain = card.terrain
       const population = card.population
@@ -73,18 +73,19 @@ class App extends Component {
       const planetObj = await {name, terrain, population, climate, residents}
       return planetObj
     })
-    return Promise.all(planetName)
+    return Promise.all(planet)
   }
 
   filterVehicles = (cardItems) => {
-    const vehicleName = cardItems.map(async card => {
+    const vehicle = cardItems.map(async card => {
       const name = card.name
       const model = card.model
       const vehicle_class = card.vehicle_class
       const passengers = card.passengers
-      return card
+      const vehicleObj = {name, model, vehicle_class, passengers}
+      return vehicleObj
     })
-    return Promise.all(vehicleName)
+    return Promise.all(vehicle)
   }
   
   removeLanding = () => {

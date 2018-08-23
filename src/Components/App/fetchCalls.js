@@ -31,6 +31,7 @@ export const fetchSpecies = async (url) => {
 }
 
 export const fetchResidents = async (url) => {
+  
   try {
     const response = await fetch(url)
     const residentData = await response.json()
