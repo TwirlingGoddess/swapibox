@@ -3,7 +3,12 @@ import './App.css';
 import Landing from '../Landing/Landing';
 import Button from '../Buttons/Button';
 import { CategoryContainer } from '../CategoryContainer/CategoryContainer';
-import { fetchData, fetchHome, fetchSpecies, fetchResidents } from '../App/fetchCalls.js';
+import { 
+  fetchData, 
+  fetchHome, 
+  fetchSpecies, 
+  fetchResidents 
+} from '../App/fetchCalls.js';
 
 class App extends Component {
   constructor() {

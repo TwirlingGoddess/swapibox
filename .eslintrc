@@ -42,7 +42,7 @@
       "before": true,
       "after": true
     }],
-    "max-len": ["warn", 80],
+    "max-len": ["warn", 120],
     "no-duplicate-imports": "error",
     "id-length": "error",
     "id-blacklist": ["error", "err", "e", "cb", "callback", "payload", "obj", "arr"],
