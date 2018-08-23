@@ -10,7 +10,7 @@ export const CategoryContainer = ({stateArray, currentlyDisplayed}) => {
 			<Card
 				{...item}
 				key={Date.now() * Math.random()}
-				currentlyDisplayed = currentlyDisplayed
+				currentlyDisplayed = {currentlyDisplayed}
 			/>)
 	})
 
