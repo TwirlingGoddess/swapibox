@@ -53,7 +53,7 @@ Card.propTypes = {
 	favorite: PropTypes.string, 
 	terrain: PropTypes.string, 
 	climate: PropTypes.string, 
-	residents: PropTypes.string, 
+	residents: PropTypes.array, 
 	model: PropTypes.string, 
 	vehicle_class: PropTypes.string, 
 	passengers: PropTypes.string,
