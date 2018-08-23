@@ -3,7 +3,7 @@ import './App.css';
 import Landing from '../Landing/Landing';
 import Button from '../Buttons/Button';
 import { CategoryContainer } from '../CategoryContainer/CategoryContainer';
-import { fetchData, fetchHome, fetchSpecies } from '../App/fetchCalls.js'
+import { fetchData, fetchHome, fetchSpecies, fetchResidents } from '../App/fetchCalls.js'
 
 class App extends Component {
 	constructor() {
@@ -26,22 +26,31 @@ class App extends Component {
 	}
 
   populateCards = async (event) => {
-    const {value} = event.target
+    let getData;
+    const {value} = event.target;
     if(`!this.state.${value}.length`) {
       const data = await fetchData(value)
-      const getData = await this.filterData(data.results)
+        if(value === 'people') {
+          getData = await this.filterPeople(data.results)
+        }
+        if(value === 'planets') {
+          getData = await this.filterPlanets(data.results)
+        }
+        if(value === 'vehicles') {
+          getData = await this.filterVehicles(data.results)
+        }
       this.setState({
         [value]: getData,
         buttons: {[value]: true},
       })
     }
       this.setState({
-        displayedCards: this.state[value]
+        displayedCards: this.state[value],
         currentlyDisplayed: [value]
       })
   }
 
-  filterData = (cardItems) => {
+  filterPeople = (cardItems) => {
     const characterName = cardItems.map(async card => {
       const name = card.name
       const homeSearch = await fetchHome(card.homeworld)
@@ -49,11 +58,33 @@ class App extends Component {
       const homeworld = homeSearch.homeworld
       const population = homeSearch.population
       const personObj = await {name, species, homeworld, population}
-      console.log(personObj)
       return personObj
     })
     return Promise.all(characterName)
   }
+
+  filterPlanets = (cardItems) => {
+    const planetName = cardItems.map(async card => {
+      const name = card.name
+      const terrain = card.terrain
+      const population = card.population
+      const climate = card.climate 
+      const residents = await fetchResidents(card.residents)
+      const planetObj = await {name, terrain, population, climate, residents}
+      return planetObj
+    })
+    return Promise.all(planetName)
+  }
+
+  filterVehicles = (cardItems) => {
+    const vehicleName = cardItems.map(async card => {
+      console.log(card)
+      return card
+    })
+    return Promise.all(vehicleName)
+  }
+
+
   
   removeLanding = () => {
     this.setState({

@@ -1,7 +1,6 @@
 export const fetchData = async (value) => {
     try {
       const url = `https://swapi.co/api/${value}/`
-      console.log(url)
       const response = await fetch(url)
       const data = await response.json()
 	  return data
@@ -26,6 +25,16 @@ export const fetchSpecies = async (url) => {
     const response = await fetch(url)
     const speciesData = await response.json()
     return speciesData.name
+  } catch(error) {
+    console.log(error.message)
+  }
+}
+
+export const fetchResidents = async (url) => {
+  try {
+    const response = await fetch(url)
+    const residentData = await response.json()
+    return residentData.name
   } catch(error) {
     console.log(error.message)
   }
