@@ -56,6 +56,7 @@ class Landing extends Component {
   }
 }
 
+Landing.propTypes = {
   title: PropTypes.string,
   year: PropTypes.string,
   text: PropTypes.string,
