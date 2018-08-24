@@ -6,11 +6,17 @@ describe('Button', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Button />);
+    wrapper = shallow(
+      <Button 
+        value={props.value} 
+        onClick={props.populateCards} 
+      />;
   });
 
   it('matches the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  
 });
 

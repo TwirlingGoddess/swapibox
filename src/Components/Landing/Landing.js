@@ -13,12 +13,16 @@ class Landing extends Component {
   }
 
   componentDidMount = async () => {
-    const url = 'https://swapi.co/api/films';
-    const reaction = await firstFetch(url);
-    const newVariable = await this.fetchFilm(reaction.results);
-    this.setState({
-      scrollText: newVariable[Math.floor(Math.random() * reaction.results.length)]
-    });
+    try {
+      const url = 'https://swapi.co/api/films';
+      const reaction = await firstFetch(url);
+      const newVariable = await this.fetchFilm(reaction.results);
+      this.setState({
+        scrollText: newVariable[Math.floor(Math.random() * reaction.results.length)]
+      });
+    } catch (error){
+        console.log(error.message)
+    }
   }
 
   fetchFilm = (arrayOfFilmResults) => {
@@ -52,6 +56,7 @@ class Landing extends Component {
   }
 }
 
+Landing.propTypes = {
   title: PropTypes.string,
   year: PropTypes.string,
   text: PropTypes.string,
