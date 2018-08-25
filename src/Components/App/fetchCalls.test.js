@@ -86,20 +86,9 @@ describe('fetchCalls', () => {
     beforeEach(() => {
       mockEvent = jest.fn();
       mockState = [{
-        homeworld: "Tatooine",
-        id: 1135694282614.0696,
-        name: "Luke Skywalker",
-        population: "200000",
-        species: "Human",
-        type: "people" }]
+        name: "Luke Skywalker" }]
       mockData = {
-        homeworld: "Tatooine",
-        id: 1135694282614.0696,
-        name: "Luke Skywalker",
-        population: "200000",
-        species: "Human",
-        type: "people" }
-      mockValue = 'people'
+        name: "Luke Skywalker" }
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
@@ -135,7 +124,7 @@ describe('fetchCalls', () => {
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(new Error(error.message))
       });
-      await expect(fetchData(mockData)).rejects.toEqual(expected);
+      await expect(fetchData(url)).rejects.toEqual(expected);
     });
 
     it('should throw an error if the status is not ok', () => {
@@ -145,21 +134,25 @@ describe('fetchCalls', () => {
           ok: false
         });
       });
-      await expect(fetchData(mockData)).rejects.toEqual(expected);
+      await expect(fetchData(url)).rejects.toEqual(expected);
     });
   });
     // ------------ fetchHome----------------------
   describe ('fetchHome', () => {
-    let mockEvent;
-    let mockHome;
-    let mockValue;
-    let expected;
-    let url
-    
+      let mockEvent;
+      let mockHome;
+      let mockState;
+      let expected;
+      let url
+      
     beforeEach(() => {
       mockEvent = jest.fn();
-      mockHome = ''
-      mockValue = ''
+      mockState = [{
+        homeworld: "Tatooine",
+        population: "200000" }]
+      mockHome = {
+        homeworld: "Tatooine",
+        population: "200000" }
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
@@ -168,19 +161,60 @@ describe('fetchCalls', () => {
       });
     });
 
-  })
+    it('should call fetchHome with the correct params', () => {
+      url = 'https://swapi.co/api/planets/1' 
+      expected = [
+        { url,
+          method: 'POST' ,
+          body: JSON.stringify({
+            people: mockState }),
+          headers: {
+            'Content-type': 'application/json'
+          };
+        };
+      ];
+      fetchHome(mockEvent);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    });
+
+    it('should return an object if the response is ok', async () => {
+      expected = mockHome;
+      const result = await fetchHome(url);
+      expect(result).toEqual(expected);
+    });
+
+    it('should throw an error if the fetch fails', () => {
+      expected = new Error(error.message);
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject(new Error(error.message))
+      });
+      await expect(fetchHome(url)).rejects.toEqual(expected);
+    });
+
+    it('should throw an error if the status is not ok', () => {
+      expected = new Error(error.message);
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      await expect(fetchHome(url)).rejects.toEqual(expected);
+    });
+  });
     // ------------ fetchSpecies----------------------
   describe ('fetchSpecies', () => {
-    let mockEvent;
-    let mockSpecies;
-    let mockValue;
-    let expected;
-    let url
-    
+      let mockEvent;
+      let mockSpecies;
+      let mockState;
+      let expected;
+      let url
+      
     beforeEach(() => {
       mockEvent = jest.fn();
-      mockSpecies = ''
-      mockValue = ''
+      mockState = [{
+        species: "human" }]
+      mockSpecies = { 
+        species: "human" }
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
@@ -189,19 +223,60 @@ describe('fetchCalls', () => {
       });
     });
 
-  })
+    it('should call fetchSpecies with the correct params', () => {
+      url = 'https://swapi.co/api/species/1' 
+      expected = [
+        { url,
+          method: 'POST' ,
+          body: JSON.stringify({
+            people: mockState }),
+          headers: {
+            'Content-type': 'application/json'
+          };
+        };
+      ];
+      fetchSpecies(mockEvent);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    });
+
+    it('should return an object if the response is ok', async () => {
+      expected = mockSpecies;
+      const result = await fetchSpecies(url);
+      expect(result).toEqual(expected);
+    });
+
+    it('should throw an error if the fetch fails', () => {
+      expected = new Error(error.message);
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject(new Error(error.message))
+      });
+      await expect(fetchSpecies(url)).rejects.toEqual(expected);
+    });
+
+    it('should throw an error if the status is not ok', () => {
+      expected = new Error(error.message);
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      await expect(fetchSpecies(url)).rejects.toEqual(expected);
+    });
+  });
     // ------------ fetchResidents----------------------
   describe ('fetchResidents', () => {
-    let mockEvent;
-    let mockResidents;
-    let mockValue;
-    let expected;
-    let url
-    
+      let mockEvent;
+      let mockResidents;
+      let mockState;
+      let expected;
+      let url
+      
     beforeEach(() => {
       mockEvent = jest.fn();
-      mockResidents = ''
-      mockValue = ''
+      mockState = [{
+        Residents: "Wicket Systri Warrick" }]
+      mockResidents = { 
+        Residents: "Wicket Systri Warrick" }
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
@@ -210,5 +285,44 @@ describe('fetchCalls', () => {
       });
     });
 
-  })
+    it('should call fetchResidents with the correct params', () => {
+      url = 'https://swapi.co/api/Residents/1' 
+      expected = [
+        { url,
+          method: 'POST' ,
+          body: JSON.stringify({
+            planets: mockState }),
+          headers: {
+            'Content-type': 'application/json'
+          };
+        };
+      ];
+      fetchResidents(mockEvent);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    });
+
+    it('should return an object if the response is ok', async () => {
+      expected = mockResidents;
+      const result = await fetchResidents(url);
+      expect(result).toEqual(expected);
+    });
+
+    it('should throw an error if the fetch fails', () => {
+      expected = new Error(error.message);
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject(new Error(error.message))
+      });
+      await expect(fetchResidents(url)).rejects.toEqual(expected);
+    });
+
+    it('should throw an error if the status is not ok', () => {
+      expected = new Error(error.message);
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      await expect(fetchResidents(url)).rejects.toEqual(expected);
+    });
+  });
 })
