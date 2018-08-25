@@ -16,17 +16,10 @@ class App extends Component {
 
     this.state = {
       displayedCards: [],
-      currentlyDisplayed: '',
       people: [],
       planets: [],
       vehicles: [],
       favorites: [],
-      buttons: {
-        people: false,
-        planets: false,
-        vehicles: false,
-        favorites:false
-      },
       landing: true
     };
   }
@@ -53,7 +46,6 @@ class App extends Component {
     if (`this.state.${value}.length`) {
       this.setState({
         displayedCards: this.state[value],
-        currentlyDisplayed: value
       });
     }
   }
@@ -66,7 +58,8 @@ class App extends Component {
       const homeworld = homeSearch.homeworld;
       const population = homeSearch.population;
       const id = Date.now() * Math.random();
-      const personObj = await {name, species, homeworld, population, id};
+      const type = 'people'
+      const personObj = await {name, species, homeworld, population, id, type};
       return personObj;
     });
     return Promise.all(character);
@@ -81,7 +74,8 @@ class App extends Component {
       const residentResults = await fetchResidents(card.residents);
       const residents = [...residentResults];
       const id = Date.now() * Math.random();
-      const planetObj = await {name, terrain, population, climate, residents, id};
+      const type = 'planets'
+      const planetObj = await {name, terrain, population, climate, residents, id, type};
       return planetObj;
     });
     return Promise.all(planet);
@@ -94,7 +88,8 @@ class App extends Component {
       const vehicleClass = card.vehicle_class;
       const passengers = card.passengers;
       const id = Date.now() * Math.random();
-      const vehicleObj = {name, model, vehicleClass, passengers, id};
+      const type = 'vehicles'
+      const vehicleObj = {name, model, vehicleClass, passengers, id, type};
       return vehicleObj;
     });
     return Promise.all(vehicle);
@@ -128,7 +123,9 @@ class App extends Component {
   }
 
   displayFavorites = () => {
-    console.log(this.state.favorites)
+    this.setState({
+      displayedCards: this.state.favorites
+    })
   }
 
   render() {
@@ -157,7 +154,6 @@ class App extends Component {
         </header>
         <CategoryContainer 
           stateArray={this.state.displayedCards}
-          currentlyDisplayed={this.state.currentlyDisplayed}
           addToFavorites={this.addToFavorites} 
         />
         {this.state.landing &&

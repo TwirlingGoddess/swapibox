@@ -3,7 +3,7 @@ import './CategoryContainer.css';
 import { Card } from '../Card/Card';
 import PropTypes from 'prop-types';
 
-export const CategoryContainer = ({ stateArray, currentlyDisplayed, addToFavorites, id }) => {
+export const CategoryContainer = ({ stateArray, addToFavorites, id }) => {
   
   const cardArray = stateArray.map(item => {
     return (
@@ -11,7 +11,6 @@ export const CategoryContainer = ({ stateArray, currentlyDisplayed, addToFavorit
         {...item} 
         id={item.id}
         key={Date.now() * Math.random()}
-        currentlyDisplayed = {currentlyDisplayed}
         addToFavorites = {addToFavorites}
       />);
   });
@@ -25,5 +24,4 @@ export const CategoryContainer = ({ stateArray, currentlyDisplayed, addToFavorit
 
 CategoryContainer.propTypes = {
   stateArray: PropTypes.array,
-  currentlyDisplayed: PropTypes.string
 };
