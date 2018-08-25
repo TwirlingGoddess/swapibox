@@ -41,7 +41,7 @@ describe('fetchCalls', () => {
             scrollText: mockLandingState }),
           headers: {
             'Content-type': 'application/json'
-          };
+          }
         };
       ];
       firstFetch(mockEvent);
@@ -106,7 +106,7 @@ describe('fetchCalls', () => {
             people: mockState }),
           headers: {
             'Content-type': 'application/json'
-          };
+          }
         };
       ];
       fetchData(mockEvent);
@@ -170,7 +170,7 @@ describe('fetchCalls', () => {
             people: mockState }),
           headers: {
             'Content-type': 'application/json'
-          };
+          }
         };
       ];
       fetchHome(mockEvent);
@@ -232,7 +232,7 @@ describe('fetchCalls', () => {
             people: mockState }),
           headers: {
             'Content-type': 'application/json'
-          };
+          }
         };
       ];
       fetchSpecies(mockEvent);
@@ -294,7 +294,7 @@ describe('fetchCalls', () => {
             planets: mockState }),
           headers: {
             'Content-type': 'application/json'
-          };
+          }
         };
       ];
       fetchResidents(mockEvent);
