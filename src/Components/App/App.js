@@ -132,6 +132,11 @@ class App extends Component {
     this.setState({
       displayedCards: this.state.favorites
     })
+    if(!this.state.favorites.length) {
+      this.setState({
+        displayedCards: [{name: "YOU HAVE NO FAVORITES", type: 'error'}]
+      })
+    }
   }
 
   render() {
