@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
 
-export const Card = ({name, species, homeworld, population, terrain, climate, residents, model, vehicleClass, passengers, currentlyDisplayed}) => {
+export const Card = ({name, species, homeworld, population, terrain, climate, residents, model, vehicleClass, passengers, currentlyDisplayed, addToFavorites, id, value}) => {
     
   if (currentlyDisplayed==='people') { 
     return (
@@ -12,7 +12,11 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
         <h5>Species: {species}</h5>
         <h5>Homeworld: {homeworld}</h5>
         <h5>Popuation: {population}</h5>
-        <button>Fav</button>
+        <button 
+          value = 'people'
+          onClick = {() => addToFavorites(id)}
+        > Fav
+        </button>
       </div>
     );
   }
@@ -26,7 +30,10 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
         <h5>Population: {population}</h5>
         <h5>Climate: {climate}</h5>
         <h5>Residents: {residents}</h5>
-        <button>Fav</button>
+        <button 
+          onClick = {() => addToFavorites(id)} 
+          value = 'people'
+          > Fav</button>
       </div>
     );
   }
@@ -39,7 +46,10 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
         <h5>Model: {model}</h5>
         <h5>Class: {vehicleClass}</h5>
         <h5>Passengers: {passengers}</h5>
-        <button>Fav</button>
+        <button 
+          onClick = {() => addToFavorites(id)} 
+          value = 'vehicles'
+        > Fav</button>
       </div>
     );
   }
@@ -57,5 +67,6 @@ Card.propTypes = {
   model: PropTypes.string, 
   vehicleClass: PropTypes.string, 
   passengers: PropTypes.string,
-  currentlyDisplayed: PropTypes.string
+  currentlyDisplayed: PropTypes.string,
+  addToFavorites: PropTypes.func
 };
