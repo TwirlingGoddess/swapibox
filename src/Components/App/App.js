@@ -117,7 +117,8 @@ class App extends Component {
         return favorite.name !== name
       })
       this.setState({
-        favorites: toggleDuplicate
+        favorites: toggleDuplicate,
+        displayedCards: toggleDuplicate
       })
     }
   }
