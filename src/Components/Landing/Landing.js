@@ -21,7 +21,8 @@ class Landing extends Component {
         scrollText: newVariable[Math.floor(Math.random() * reaction.results.length)]
       });
     } catch (error){
-        console.log(error.message)
+      
+        console.log(error.message);
     }
   }
 
