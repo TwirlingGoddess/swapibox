@@ -8,7 +8,7 @@ const Button = (props) => {
       value={props.value} 
       onClick={props.populateCards} 
     >
-      {props.value}
+      {props.value} <aside>{props.counter}</aside>
     </button>
   );
 };

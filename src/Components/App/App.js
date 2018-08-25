@@ -149,6 +149,8 @@ class App extends Component {
             <Button 
               value='favorites'
               populateCards={this.displayFavorites}
+              counter={this.state.favorites.length}
+              className='counter'
             />
           </div>
         </header>
