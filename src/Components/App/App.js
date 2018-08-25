@@ -51,6 +51,7 @@ class App extends Component {
   }
 
   filterPeople = (cardItems) => {
+    console.log(cardItems)
     const character = cardItems.map(async card => {
       const name = card.name;
       const homeSearch = await fetchHome(card.homeworld);
@@ -66,6 +67,8 @@ class App extends Component {
   }
 
   filterPlanets = (cardItems) => {
+    console.log(cardItems)
+    
     const planet = cardItems.map(async card => {
       const name = card.name;
       const terrain = card.terrain;
@@ -82,6 +85,8 @@ class App extends Component {
   };
 
   filterVehicles = (cardItems) => {
+    console.log(cardItems)
+    
     const vehicle = cardItems.map(async card => {
       const name = card.name;
       const model = card.model;
