@@ -1,24 +1,24 @@
 
 export const firstFetch = async (url) => { 
   try {
-    const response = await fetch(url)
-    const reaction = await response.json()
-    return await reaction
-  } catch(error) {
-      console.log(error.message)
+    const response = await fetch(url);
+    const reaction = await response.json();
+    return await reaction;
+  } catch (error) {
+      console.log(error.message);
   }
-}
+};
 
 export const fetchData = async (value) => {
   try {
-    const url = `https://swapi.co/api/${value}/`
-    const response = await fetch(url)
-    const data = await response.json()
-  return data
-  } catch(error) {
-    console.log(error.message)
+    const url = `https://swapi.co/api/${value}/`;
+    const response = await fetch(url);
+    const data = await response.json();
+  return data;
+  } catch (error) {
+    console.log(error.message);
   }
-}
+};
 
 export const fetchHome = async (url) => {
   try {

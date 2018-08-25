@@ -50,10 +50,12 @@ class App extends Component {
         buttons: {[value]: true}
       });
     }
-    this.setState({
-      displayedCards: this.state[value],
-      currentlyDisplayed: value
-    });
+    if (`this.state.${value}.length`) {
+      this.setState({
+        displayedCards: this.state[value],
+        currentlyDisplayed: value
+      });
+    }
   }
 
   filterPeople = (cardItems) => {
@@ -63,7 +65,8 @@ class App extends Component {
       const species = await fetchSpecies(card.species);
       const homeworld = homeSearch.homeworld;
       const population = homeSearch.population;
-      const personObj = await {name, species, homeworld, population};
+      const id = Date.now() * Math.random();
+      const personObj = await {name, species, homeworld, population, id};
       return personObj;
     });
     return Promise.all(character);
@@ -77,7 +80,8 @@ class App extends Component {
       const climate = card.climate; 
       const residentResults = await fetchResidents(card.residents);
       const residents = [...residentResults];
-      const planetObj = await {name, terrain, population, climate, residents};
+      const id = Date.now() * Math.random();
+      const planetObj = await {name, terrain, population, climate, residents, id};
       return planetObj;
     });
     return Promise.all(planet);
@@ -89,7 +93,8 @@ class App extends Component {
       const model = card.model;
       const vehicleClass = card.vehicle_class;
       const passengers = card.passengers;
-      const vehicleObj = {name, model, vehicleClass, passengers};
+      const id = Date.now() * Math.random();
+      const vehicleObj = {name, model, vehicleClass, passengers, id};
       return vehicleObj;
     });
     return Promise.all(vehicle);
@@ -100,6 +105,31 @@ class App extends Component {
       landing: false
     });
   };
+
+  addToFavorites = (id) => {
+    const newFave = this.state.displayedCards.find(card => card.id === id)
+    this.setState({
+      favorites: [...this.state.favorites, newFave]
+    })
+    return this.checkDuplicate(newFave.name)
+  }
+
+  checkDuplicate = (name) => {
+    const favorites = this.state.favorites;
+    const duplicate = favorites.filter(card => card.name === name)
+    if (duplicate.length > 0) {
+      const toggleDuplicate = favorites.filter(favorite => {
+        return favorite.name !== name
+      })
+      this.setState({
+        favorites: toggleDuplicate
+      })
+    }
+  }
+
+  displayFavorites = () => {
+    console.log(this.state.favorites)
+  }
 
   render() {
     return (
@@ -121,13 +151,15 @@ class App extends Component {
             />
             <Button 
               value='favorites'
-              // populateCards={this.populateCards}
+              populateCards={this.displayFavorites}
             />
           </div>
         </header>
         <CategoryContainer 
           stateArray={this.state.displayedCards}
-          currentlyDisplayed={this.state.currentlyDisplayed}/>
+          currentlyDisplayed={this.state.currentlyDisplayed}
+          addToFavorites={this.addToFavorites} 
+        />
         {this.state.landing &&
         <Landing removeLanding={this.removeLanding}/>}
       </div>
