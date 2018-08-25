@@ -6,7 +6,8 @@ const Button = (props) => {
   return (
     <button 
       value={props.value} 
-      onClick={props.populateCards} 
+      onClick={props.populateCards}
+      className={props.className}
     >
       {props.value} <aside>{props.counter}</aside>
     </button>
