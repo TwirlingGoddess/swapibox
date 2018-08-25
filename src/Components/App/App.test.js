@@ -107,15 +107,38 @@ describe('App', () => {
       type: "vehicles",
       vehicleClass: "wheeled" }];
     expect.instance().filterVehicles().toHaveBeenCalledWith(mockInput);
-    expect(wrapper.state('vehicles')).toEqual(expected)
+    expect(wrapper.state('vehicles')).toEqual(expected);
   });
 
   it('should update state when removeLanding function is invoked', () => {
-    const initialState = true
-    expected = false
-    wrapper.find('.fade').simulate('click')
-    expect(removeLanding).toHaveBeenCalled()
-    expect(wrapper.state('landing')).toEqual(expected)
+    const initialState = true;
+    expected = false;
+    wrapper.find('.fade').simulate('click');
+    expect(removeLanding).toHaveBeenCalled();
+    expect(wrapper.state('landing')).toEqual(expected);
+  });
+
+  it('should update state when addToFavorites is invoked', () => {
+    const initialState = [];
+    const mockFavorite = [{
+      id: 105989059159.61761,
+      model: "Digger Crawler",
+      name: "Sand Crawler",
+      passengers: "30",
+      type: "vehicles",
+      vehicleClass: "wheeled" }];
+
+    expected = [{
+      id: 105989059159.61761,
+      model: "Digger Crawler",
+      name: "Sand Crawler",
+      passengers: "30",
+      type: "vehicles",
+      vehicleClass: "wheeled" }];
+    wrapper.setState({ favorites: initialState });
+    wrapper.instance().addToFavorites(mockFavorite)
+    expect(wrapper.state('favorites')).toEqual(expected)
+    expect(wrapper.state('favorites').length).toEqual(1)
   })
 
 
