@@ -10,3 +10,16 @@
 	width: 5rem;
 	height: 3rem;
 }
+
+.counter aside {
+  background-color: navy;
+  color: yellow;
+  margin-left: .25rem;
+}
+
+.counter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}

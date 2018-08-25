@@ -2,9 +2,9 @@ import React from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
 
-export const Card = ({name, species, homeworld, population, terrain, climate, residents, model, vehicleClass, passengers, currentlyDisplayed, addToFavorites, id, value}) => {
+export const Card = ({name, species, homeworld, population, terrain, climate, residents, model, vehicleClass, passengers, addToFavorites, id, type}) => {
     
-  if (currentlyDisplayed==='people') { 
+  if (type === 'people') { 
     return (
       <div className="Card">
         <h4>{name}</h4>
@@ -21,7 +21,7 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
     );
   }
 
-  if (currentlyDisplayed==='planets') {
+  if (type ==='planets') {
     return (
       <div className="Card">
         <h4>{name}</h4>
@@ -38,7 +38,7 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
     );
   }
 
-  if (currentlyDisplayed === 'vehicles') {
+  if (type === 'vehicles') {
     return (
       <div className="Card">
         <h4>{name}</h4>
@@ -52,6 +52,14 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
         > Fav</button>
       </div>
     );
+  }
+
+  if(type === 'error') {
+    return (
+      <div className="Card">
+        <h1>{name}</h1>
+      </div>
+    )
   }
 }; 
 
@@ -67,6 +75,6 @@ Card.propTypes = {
   model: PropTypes.string, 
   vehicleClass: PropTypes.string, 
   passengers: PropTypes.string,
-  currentlyDisplayed: PropTypes.string,
+  type: PropTypes.string,
   addToFavorites: PropTypes.func
 };
