@@ -120,6 +120,11 @@ class App extends Component {
         favorites: toggleDuplicate,
         displayedCards: toggleDuplicate
       })
+      if(toggleDuplicate.length === 0 && this.state.displayedCards === this.state.favorites) {
+        this.setState({
+          displayedCards: [{name: "YOU HAVE NO FAVORITES", type: 'error'}]
+        })
+      }
     }
   }
 

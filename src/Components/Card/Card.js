@@ -53,6 +53,14 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
       </div>
     );
   }
+
+  if(type === 'error') {
+    return (
+      <div className="Card">
+        <h1>{name}</h1>
+      </div>
+    )
+  }
 }; 
 
 Card.propTypes = {
