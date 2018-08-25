@@ -43,10 +43,10 @@ describe('App', () => {
       species: "Human",
       type: "people" }];
     Date.now() * Math.random() = jest.fn().mockImplementation(() => 1135694282614.0696);
-    wrapper.setState({ people: initialState });
+    wrapper.setState({ displayedCards: initialState });
     wrapper.instance().populateCards(mockCategory);
-    expect(wrapper.state('people')).toEqual(expected);
-    expect(wrapper.state('people').length).toEqual(1);
+    expect(wrapper.state('displayedCards')).toEqual(expected);
+    expect(wrapper.state('displayedCards').length).toEqual(1);
   });
 
   it('should return an array of people when filterPeople is invoked', () => {
@@ -136,20 +136,51 @@ describe('App', () => {
       type: "vehicles",
       vehicleClass: "wheeled" }];
     wrapper.setState({ favorites: initialState });
-    wrapper.instance().addToFavorites(mockFavorite)
-    expect(wrapper.state('favorites')).toEqual(expected)
-    expect(wrapper.state('favorites').length).toEqual(1)
-  })
+    wrapper.instance().addToFavorites(mockFavorite);
+    expect(wrapper.state('favorites')).toEqual(expected);
+    expect(wrapper.state('favorites').length).toEqual(1);
+  });
 
-
-
-
+  it('should check the state of favorites for duplicates when checkDuplicates is invoked', () => {
+    const mockParam = "Sand Crawler";
+    const initialState = [{
+      id: 105989059159.61761,
+      model: "Digger Crawler",
+      name: "Sand Crawler",
+      passengers: "30",
+      type: "vehicles",
+      vehicleClass: "wheeled" }, {
+      id: 105989059159.61761,
+      model: "Digger Crawler",
+      name: "Sand Crawler",
+      passengers: "30",
+      type: "vehicles",
+      vehicleClass: "wheeled" }];];
+    expected = [];
+    wrapper.setState({ favorites: initialState });
+    wrapper.instance().checkDuplicates(mockParam);
+    expect(checkDuplicates).toHaveBeenCalledWith(mockParam);
+    expect(wrapper.state(favorites)).toEqual(expected);
+  });
 
   it('should invoke displayFavorites when a favorites button is pressed', () => {
-    wrapper.find('.button-box').simulate('click')
-    expect(displayFavorites).toHaveBeenCalled()
-  })
+    wrapper.find('.button-box').simulate('click');
+    expect(displayFavorites).toHaveBeenCalled();
+  });
 
+  it('should update state when displayFavorites is invoked', () => {
+    const initialState = [];
+    expected = [{
+      homeworld: "Tatooine",
+      id: 1135694282614.0696,
+      name: "Luke Skywalker",
+      population: "200000",
+      species: "Human",
+      type: "people" }]
+    wrapper.setState({ favorites: initialState });
+    wrapper.instance().displayFavorites();
+    expect(wrapper.state(displayedCards)).toEqual(expected);
+  });
 });
 
 
