@@ -110,6 +110,13 @@ describe('App', () => {
     expect(wrapper.state('vehicles')).toEqual(expected)
   });
 
+  it('should update state when removeLanding function is invoked', () => {
+    const initialState = true
+    expected = false
+    wrapper.find('.fade').simulate('click')
+    expect(removeLanding).toHaveBeenCalled()
+    expect(wrapper.state('landing')).toEqual(expected)
+  })
 
 
 
