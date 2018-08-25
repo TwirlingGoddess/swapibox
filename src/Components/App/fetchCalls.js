@@ -5,7 +5,7 @@ export const firstFetch = async (url) => {
     const reaction = await response.json();
     return await reaction;
   } catch (error) {
-      console.log(error.message);
+      throw new Error(error.message);
   }
 };
 
@@ -16,7 +16,7 @@ export const fetchData = async (value) => {
     const data = await response.json();
   return data;
   } catch (error) {
-    console.log(error.message);
+      throw new Error(error.message);
   }
 };
 
@@ -30,7 +30,7 @@ export const fetchHome = async (url) => {
     };
     return homeObj;
   } catch (error) {
-    console.log(error.message);
+      throw new Error(error.message);
   }
 };
 
@@ -40,7 +40,7 @@ export const fetchSpecies = async (url) => {
     const speciesData = await response.json();
     return speciesData.name;
   } catch (error) {
-    console.log(error.message);
+      throw new Error(error.message);
   }
 };
 
@@ -54,6 +54,6 @@ export const fetchResidents = (urlArray) => {
     });
     return Promise.all(residentNames);
   } catch (error) {
-    console.log(error.message);
+      throw new Error(error.message);
   }
 };
