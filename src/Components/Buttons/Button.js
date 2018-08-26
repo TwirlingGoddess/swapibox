@@ -19,4 +19,6 @@ export default Button;
 Button.propTypes = {
   value: PropTypes.string,
   populateCards: PropTypes.func
+  className: PropTypes.string,
+  counter: PropTypes.number
 };
