@@ -28,6 +28,7 @@ export const Card = ({
         <button 
           value = 'people'
           onClick = {() => addToFavorites(id)}
+          className = 'faveButton'
         > Fav
         </button>
       </div>

@@ -1,3 +1,173 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CategoryContainer matches the snapshot 1`] = `undefined`;
+exports[`CategoryContainer matches the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Unknown
+    stateArray={
+        Array [
+            Object {
+              "homeworld": "Tatooine",
+              "name": "Luke Skywalker",
+              "population": "200000",
+              "species": "human",
+            },
+            Object {
+              "homeworld": "Alderaan",
+              "name": "Leia Organa",
+              "population": "2000000000",
+              "species": "human",
+            },
+          ]
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Unknown
+          addToFavorites={undefined}
+          homeworld="Tatooine"
+          id={undefined}
+          name="Luke Skywalker"
+          population="200000"
+          species="human"
+/>,
+        <Unknown
+          addToFavorites={undefined}
+          homeworld="Alderaan"
+          id={undefined}
+          name="Leia Organa"
+          population="2000000000"
+          species="human"
+/>,
+      ],
+      "className": "Container",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": "133725610497.41133",
+        "nodeType": "function",
+        "props": Object {
+          "addToFavorites": undefined,
+          "homeworld": "Tatooine",
+          "id": undefined,
+          "name": "Luke Skywalker",
+          "population": "200000",
+          "species": "human",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "1460572377128.5771",
+        "nodeType": "function",
+        "props": Object {
+          "addToFavorites": undefined,
+          "homeworld": "Alderaan",
+          "id": undefined,
+          "name": "Leia Organa",
+          "population": "2000000000",
+          "species": "human",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Unknown
+            addToFavorites={undefined}
+            homeworld="Tatooine"
+            id={undefined}
+            name="Luke Skywalker"
+            population="200000"
+            species="human"
+/>,
+          <Unknown
+            addToFavorites={undefined}
+            homeworld="Alderaan"
+            id={undefined}
+            name="Leia Organa"
+            population="2000000000"
+            species="human"
+/>,
+        ],
+        "className": "Container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "133725610497.41133",
+          "nodeType": "function",
+          "props": Object {
+            "addToFavorites": undefined,
+            "homeworld": "Tatooine",
+            "id": undefined,
+            "name": "Luke Skywalker",
+            "population": "200000",
+            "species": "human",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "1460572377128.5771",
+          "nodeType": "function",
+          "props": Object {
+            "addToFavorites": undefined,
+            "homeworld": "Alderaan",
+            "id": undefined,
+            "name": "Leia Organa",
+            "population": "2000000000",
+            "species": "human",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

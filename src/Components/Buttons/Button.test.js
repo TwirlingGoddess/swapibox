@@ -10,13 +10,13 @@ describe('Button', () => {
       <Button 
         value={props.value} 
         onClick={props.populateCards} 
-      />;
+      />
+    )
   });
 
   it('matches the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
-
   
 });
 

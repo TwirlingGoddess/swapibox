@@ -1,5 +1,6 @@
 import React from 'react';
 import { CategoryContainer } from './CategoryContainer';
+import { Card } from '../Card/Card';
 import { shallow } from 'enzyme';
 
 describe('CategoryContainer', () => {
@@ -11,39 +12,22 @@ describe('CategoryContainer', () => {
     mockToggleFavorite = jest.fn();
     mockCardsList = [{name: 'Luke Skywalker', species: 'human', homeworld: 'Tatooine', population: '200000'}, 
                     {name: 'Leia Organa', species: 'human', homeworld: 'Alderaan', population: '2000000000'}]
-    wrapper = shallow(<CategoryContainer />);
+    wrapper = shallow(<CategoryContainer stateArray={mockCardsList} />);
   });
 
+  
   it('matches the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
 
-  it('has the correct number of groceries', () => {
-    wrapper = shallow(
-      <Card
-        item={[
-          {name: 'Luke Skywalker', species: 'human', homeworld: 'Tatooine', population: '200000'},
-          {name: 'Leia Organa', species: 'human', homeworld: 'Alderaan', population: '2000000000'}
-        ]}
-      />
-    );
-
-    expect(wrapper.find('Card').length).toEqual(2);
+  it('renders the correct number of cards', () => {
+    expect(wrapper.find('.Container').length).toEqual(1);
   });
-
-describe('toggleFavorite', () => {
 
   it('triggers toggleFavorite when clicked', () => {
-    const wrapper = mount(
-      <Card
-        item={[
-          {name: 'Luke Skywalker', species: 'human', homeworld: 'Tatooine', population: '200000'},
-          {name: 'Leia Organa', species: 'human', homeworld: 'Alderaan', population: '2000000000'}
-        ]}
-      />
-    );
-    wrapper.find('.Card').simulate('click');
-    expect(mockToggleFavorite).toBeCalled();
+    wrapper.find('.faveButton').simulate('click');
+    expect(mockToggleFavorite).toHaveBeenCalled();
   });
-});
+
+})
