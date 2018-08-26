@@ -10,8 +10,7 @@ describe('Landing', () => {
 
   beforeEach(() => {
     wrapper = shallow(<Landing />);
-    mockEvent = jest.fn()
-    mockScroll = 'Turmoil has engulfed the Galactic Republic. The taxation of trade routes to outlying star systems is in dispute.'
+    mockEvent = jest.fn();
   });
 
   it('matches the snapshot', () => {
@@ -19,24 +18,24 @@ describe('Landing', () => {
   });
 
   it('has a property scrollText with initial state of an empty object', () => {
-    mockState = {}
-    expect(wrapper.state('scrollText')).toBe(mockState)
-  })
+    mockState = {};
+    expect(wrapper.state('scrollText')).toBe(mockState);
+  });
 
   it('should invoke the fetchFilm function on pageload', () => {
-    wrapper.instance().fetchFilm(mockEvent)
-    expect(mockEvent).toHaveBeenCalled()
-  })
+    wrapper.instance().fetchFilm(mockEvent);
+    expect(mockEvent).toHaveBeenCalled();
+  });
 
   it('should call fetchFilm with the correct params', () => { 
-    let mockArray = [{opening_crawl:'Turmoil has engulfed the Galactic Republic. The taxation of trade routes to outlying star systems is in dispute.'}]
-    expect(fetchFilm).toHaveBeenCalledWith(mockArray)
-  })
+    let mockArray = [{openingCrawl:'Turmoil has engulfed the Galactic Republic. The taxation of trade routes to outlying star systems is in dispute.'}];
+    expect(fetchFilm).toHaveBeenCalledWith(mockArray);
+  });
 
   it('should update state with the correct data when fetchFilm is invoked', () => {
-    let mockArray = [{opening_crawl:'Turmoil has engulfed the Galactic Republic. The taxation of trade routes to outlying star systems is in dispute.'}]
-    wrapper.instance().fetchFilm(mockArray)
-    expect(wrapper.state('scrollText')).toEqual(mockState)
-  })
+    let mockArray = [{openingCrawl:'Turmoil has engulfed the Galactic Republic. The taxation of trade routes to outlying star systems is in dispute.'}];
+    wrapper.instance().fetchFilm(mockArray);
+    expect(wrapper.state('scrollText')).toEqual(mockState);
+  });
 
 });
