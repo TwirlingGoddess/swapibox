@@ -2,7 +2,20 @@ import React from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
 
-export const Card = ({name, species, homeworld, population, terrain, climate, residents, model, vehicleClass, passengers, addToFavorites, id, type}) => {
+export const Card = ({
+  name, 
+  species, 
+  homeworld, 
+  population, 
+  terrain, 
+  climate, 
+  residents, 
+  model, 
+  vehicleClass, 
+  passengers, 
+  addToFavorites, 
+  id, 
+  type}) => {
     
   if (type === 'people') { 
     return (
@@ -33,7 +46,7 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
         <button 
           onClick = {() => addToFavorites(id)} 
           value = 'people'
-          > Fav</button>
+        > Fav</button>
       </div>
     );
   }
@@ -54,12 +67,12 @@ export const Card = ({name, species, homeworld, population, terrain, climate, re
     );
   }
 
-  if(type === 'error') {
+  if (type === 'error') {
     return (
       <div className="Card">
         <h1>{name}</h1>
       </div>
-    )
+    );
   }
 }; 
 
