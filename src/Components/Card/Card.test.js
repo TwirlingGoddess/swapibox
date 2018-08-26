@@ -21,7 +21,7 @@ describe('Card', () => {
   });
 
   it('should have the text of name in the h4', () => {
-    const expected = <h4>'Luke Skywalker'</h4>;
+    const expected = <h4> "Luke Skywalker" </h4>;
     expect(wrapper.contains(expected)).toEqual(true);
   });
 
