@@ -45,13 +45,12 @@ class App extends Component {
     }
     if (`this.state.${value}.length`) {
       this.setState({
-        displayedCards: this.state[value],
+        displayedCards: this.state[value]
       });
     }
   }
 
   filterPeople = (cardItems) => {
-    console.log(cardItems)
     const character = cardItems.map(async card => {
       const name = card.name;
       const homeSearch = await fetchHome(card.homeworld);
@@ -59,7 +58,7 @@ class App extends Component {
       const homeworld = homeSearch.homeworld;
       const population = homeSearch.population;
       const id = Date.now() * Math.random();
-      const type = 'people'
+      const type = 'people';
       const personObj = await {name, species, homeworld, population, id, type};
       return personObj;
     });
@@ -67,8 +66,6 @@ class App extends Component {
   }
 
   filterPlanets = (cardItems) => {
-    console.log(cardItems)
-    
     const planet = cardItems.map(async card => {
       const name = card.name;
       const terrain = card.terrain;
@@ -77,23 +74,29 @@ class App extends Component {
       const residentResults = await fetchResidents(card.residents);
       const residents = [...residentResults];
       const id = Date.now() * Math.random();
-      const type = 'planets'
-      const planetObj = await {name, terrain, population, climate, residents, id, type};
+      const type = 'planets';
+      const planetObj = await {
+        name, 
+        terrain, 
+        population, 
+        climate, 
+        residents, 
+        id, 
+        type
+      };
       return planetObj;
     });
     return Promise.all(planet);
   };
 
-  filterVehicles = (cardItems) => {
-    console.log(cardItems)
-    
+  filterVehicles = (cardItems) => { 
     const vehicle = cardItems.map(async card => {
       const name = card.name;
       const model = card.model;
       const vehicleClass = card.vehicle_class;
       const passengers = card.passengers;
       const id = Date.now() * Math.random();
-      const type = 'vehicles'
+      const type = 'vehicles';
       const vehicleObj = {name, model, vehicleClass, passengers, id, type};
       return vehicleObj;
     });
@@ -107,28 +110,32 @@ class App extends Component {
   };
 
   addToFavorites = (id) => {
-    const newFave = this.state.displayedCards.find(card => card.id === id)
+    const newFave = this.state.displayedCards.find(card => card.id === id);
     this.setState({
       favorites: [...this.state.favorites, newFave]
-    })
-    return this.checkDuplicate(newFave.name)
+    });
+    return this.checkDuplicate(newFave.name);
   }
 
   checkDuplicate = (name) => {
     const favorites = this.state.favorites;
-    const duplicate = favorites.filter(card => card.name === name)
+    const duplicate = favorites.filter(card => card.name === name);
     if (duplicate.length > 0) {
       const toggleDuplicate = favorites.filter(favorite => {
-        return favorite.name !== name
-      })
+        return favorite.name !== name;
+      });
       this.setState({
         favorites: toggleDuplicate,
         displayedCards: toggleDuplicate
-      })
-      if(toggleDuplicate.length === 0 && this.state.displayedCards === this.state.favorites) {
+      });
+      if (toggleDuplicate.length === 0 && 
+        this.state.displayedCards === this.state.favorites) {
         this.setState({
-          displayedCards: [{name: "YOU HAVE NO FAVORITES", type: 'error'}]
-        })
+          displayedCards: [{
+            name: "YOU HAVE NO FAVORITES", 
+            type: 'error'
+          }]
+        });
       }
     }
   }
@@ -136,11 +143,11 @@ class App extends Component {
   displayFavorites = () => {
     this.setState({
       displayedCards: this.state.favorites
-    })
-    if(!this.state.favorites.length) {
+    });
+    if (!this.state.favorites.length) {
       this.setState({
         displayedCards: [{name: "YOU HAVE NO FAVORITES", type: 'error'}]
-      })
+      });
     }
   }
 
