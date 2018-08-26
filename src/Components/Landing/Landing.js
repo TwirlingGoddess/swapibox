@@ -38,7 +38,9 @@ class Landing extends Component {
   render() {
     const { year, title, text } = this.state.scrollText;
     return (
-      <div onClick={this.props.removeLanding}>
+      <div 
+        onClick={this.props.removeLanding}
+        className='landing'>
         <div className="fade"></div>
         <article className="star-wars">
           <div className="crawl">
