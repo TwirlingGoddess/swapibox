@@ -42,7 +42,7 @@ describe('App', () => {
       population: "200000",
       species: "Human",
       type: "people" }];
-    Date.now() * Math.random() = jest.fn().mockImplementation(() => 1135694282614.0696);
+    // Date.now() * Math.random() = jest.fn().mockImplementation(() => 1135694282614.0696);
     wrapper.setState({ displayedCards: initialState });
     wrapper.instance().populateCards(mockCategory);
     expect(wrapper.state('displayedCards')).toEqual(expected);
@@ -155,7 +155,7 @@ describe('App', () => {
       name: "Sand Crawler",
       passengers: "30",
       type: "vehicles",
-      vehicleClass: "wheeled" }];];
+      vehicleClass: "wheeled" }]];
     expected = [];
     wrapper.setState({ favorites: initialState });
     wrapper.instance().checkDuplicates(mockParam);
