@@ -10,7 +10,7 @@ import {
 } from './fetchCalls';
 
 
-describe('fetchCalls', () => {
+// describe('fetchCalls', () => {
 
     // ------------ firstFetch----------------------
   describe ('firstFetch', () => {
@@ -42,7 +42,7 @@ describe('fetchCalls', () => {
           headers: {
             'Content-type': 'application/json'
           }
-        };
+        }
       ];
       firstFetch(mockEvent);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
@@ -107,7 +107,7 @@ describe('fetchCalls', () => {
           headers: {
             'Content-type': 'application/json'
           }
-        };
+        }
       ];
       fetchData(mockEvent);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
@@ -119,7 +119,7 @@ describe('fetchCalls', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should throw an error if the fetch fails', () => {
+    it('should throw an error if the fetch fails', async () => {
       expected = new Error(error.message);
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(new Error(error.message))
@@ -127,7 +127,7 @@ describe('fetchCalls', () => {
       await expect(fetchData(url)).rejects.toEqual(expected);
     });
 
-    it('should throw an error if the status is not ok', () => {
+    it('should throw an error if the status is not ok', async () => {
       expected = new Error(error.message);
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
@@ -171,7 +171,7 @@ describe('fetchCalls', () => {
           headers: {
             'Content-type': 'application/json'
           }
-        };
+        }
       ];
       fetchHome(mockEvent);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
@@ -183,7 +183,7 @@ describe('fetchCalls', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should throw an error if the fetch fails', () => {
+    it('should throw an error if the fetch fails', async () => {
       expected = new Error(error.message);
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(new Error(error.message))
@@ -191,7 +191,7 @@ describe('fetchCalls', () => {
       await expect(fetchHome(url)).rejects.toEqual(expected);
     });
 
-    it('should throw an error if the status is not ok', () => {
+    it('should throw an error if the status is not ok', async () => {
       expected = new Error(error.message);
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
@@ -233,7 +233,7 @@ describe('fetchCalls', () => {
           headers: {
             'Content-type': 'application/json'
           }
-        };
+        }
       ];
       fetchSpecies(mockEvent);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
@@ -245,7 +245,7 @@ describe('fetchCalls', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should throw an error if the fetch fails', () => {
+    it('should throw an error if the fetch fails', async () => {
       expected = new Error(error.message);
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(new Error(error.message))
@@ -253,7 +253,7 @@ describe('fetchCalls', () => {
       await expect(fetchSpecies(url)).rejects.toEqual(expected);
     });
 
-    it('should throw an error if the status is not ok', () => {
+    it('should throw an error if the status is not ok', async () => {
       expected = new Error(error.message);
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
@@ -295,7 +295,7 @@ describe('fetchCalls', () => {
           headers: {
             'Content-type': 'application/json'
           }
-        };
+        }
       ];
       fetchResidents(mockEvent);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
@@ -307,7 +307,7 @@ describe('fetchCalls', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should throw an error if the fetch fails', () => {
+    it('should throw an error if the fetch fails', async () => {
       expected = new Error(error.message);
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(new Error(error.message))
@@ -315,7 +315,7 @@ describe('fetchCalls', () => {
       await expect(fetchResidents(url)).rejects.toEqual(expected);
     });
 
-    it('should throw an error if the status is not ok', () => {
+    it('should throw an error if the status is not ok', async () => {
       expected = new Error(error.message);
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
@@ -325,4 +325,4 @@ describe('fetchCalls', () => {
       await expect(fetchResidents(url)).rejects.toEqual(expected);
     });
   });
-})
+// });
