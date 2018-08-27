@@ -126,8 +126,13 @@ class App extends Component {
       });
       this.setState({
         favorites: toggleDuplicate,
-        displayedCards: toggleDuplicate
       });
+      if (this.state.displayedCards === this.state.favorites) {
+        this.setState({
+          favorites: toggleDuplicate,
+          displayedCards: toggleDuplicate
+        });
+      }
       if (toggleDuplicate.length === 0 && 
         this.state.displayedCards === this.state.favorites) {
         this.setState({
