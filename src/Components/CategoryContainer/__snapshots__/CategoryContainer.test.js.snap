@@ -57,7 +57,7 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": "133725610497.41133",
+        "key": "178211692749.1946",
         "nodeType": "function",
         "props": Object {
           "addToFavorites": undefined,
@@ -73,7 +73,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": "1460572377128.5771",
+        "key": "336930355640.29224",
         "nodeType": "function",
         "props": Object {
           "addToFavorites": undefined,
@@ -120,7 +120,7 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": "133725610497.41133",
+          "key": "178211692749.1946",
           "nodeType": "function",
           "props": Object {
             "addToFavorites": undefined,
@@ -136,7 +136,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": "1460572377128.5771",
+          "key": "336930355640.29224",
           "nodeType": "function",
           "props": Object {
             "addToFavorites": undefined,

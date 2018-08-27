@@ -7,11 +7,8 @@ describe('Button', () => {
 
   beforeEach(() => {
     wrapper = shallow(
-      <Button 
-        value={props.value} 
-        onClick={props.populateCards} 
-      />
-    )
+      <Button />
+    );
   });
 
   it('matches the snapshot', () => {
@@ -19,4 +16,6 @@ describe('Button', () => {
   });
   
 });
+
+
 

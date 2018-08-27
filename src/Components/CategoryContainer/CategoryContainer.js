@@ -24,4 +24,6 @@ export const CategoryContainer = ({ stateArray, addToFavorites, id }) => {
 
 CategoryContainer.propTypes = {
   stateArray: PropTypes.array,
+  addToFavorites: PropTypes.func,
+  id: PropTypes.number
 };
