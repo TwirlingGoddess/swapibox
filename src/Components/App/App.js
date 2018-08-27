@@ -110,7 +110,9 @@ class App extends Component {
   };
 
   addToFavorites = (id) => {
+
     const newFave = this.state.displayedCards.find(card => card.id === id);
+    newFave.favorite = !newFave.favorite
     this.setState({
       favorites: [...this.state.favorites, newFave]
     });
@@ -158,9 +160,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <header className="header">
-          <h1 className="title">SWAPIbox</h1>
+          <h1 className="title">SWapi Box</h1>
           <div className="button-box">
             <Button 
               value='people' 

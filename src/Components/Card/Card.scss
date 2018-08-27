@@ -5,10 +5,33 @@
 	align-items: center;
 	height: 13rem;
 	width: 12rem;
-	border: 1.5px solid pink;
 	border-radius: 9px 9px;
 	overflow: hidden;
 	cursor: pointer;
-	margin-bottom: 1rem;
-  	color: white;
+	margin: 1rem;
+  color: white;
+}
+
+.Card h4 {
+	color: yellow
+}
+
+.Card h5 {
+	color: lightyellow
+}
+
+.people {
+	box-shadow: 4px 4px 14px 4px pink;
+}
+
+.planets {
+	box-shadow: 4px 4px 14px 4px green;
+}
+
+.vehicles {
+	box-shadow: 4px 4px 14px 4px purple;
+}
+
+.true {
+	background-image: radial-gradient(white, pink , red);
 }

@@ -3,18 +3,23 @@
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-	margin: 1rem 0;
+  height: 4rem;
 }
 
 .button-box button {
-	width: 5rem;
+	width: 6rem;
 	height: 3rem;
+  border-radius: 91px 91px;
+  box-shadow: 2px 2px 2px orange;
+  font-size: medium;
+  background-image: radial-gradient(white, white , yellow);
+  color: navy;
 }
 
 .counter aside {
-  background-color: navy;
-  color: yellow;
+  background-image: radial-gradient(red, pink , white);
   margin-left: .25rem;
+
 }
 
 .counter {
