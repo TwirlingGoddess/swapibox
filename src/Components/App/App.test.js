@@ -18,25 +18,24 @@ describe('App', () => {
   it('should invoke populateCards when a button is pressed', () => {
     const spy = jest.spyOn(wrapper.instance(), 'mockPopulate');
     wrapper.instance().forceUpdate();
-    const mockEvent = {
+    const mockEvent = { target: {value: {
       homeworld: "Tatooine",
       id: 1135694282614.0696,
       name: "Luke Skywalker",
       population: "200000",
       species: "Human",
-      type: "people" };
+      type: "people" }}};
     wrapper.find('.button-box').simulate('click', mockEvent);
     expect(spy).toHaveBeenCalled();
   });
 
   it('should render the category container with the correct props', () => {
-    
     expect(wrapper.find(CategoryContainer).prop('stateArray')).toEqual([]);
     expect(wrapper.find(CategoryContainer).prop('addToFavorites'))
       .toEqual(wrapper.instance().addToFavorites);
   });
 
-  it.skip('should update state when populateCards is invoked', () => {
+  it('should update state when populateCards is invoked', () => {
     const initialState = [];
     const mockCategory = {
       homeworld: "Tatooine",

@@ -91,7 +91,8 @@ describe('firstFetch', () => {
     });
 
     it('should call fetchData with the correct params', () => {
-      url = 'https://swapi.co/api/people'; 
+      
+      url = 'https://swapi.co/api/people/'; 
       expected = [
         { url,
           method: 'POST',
@@ -102,7 +103,7 @@ describe('firstFetch', () => {
           }
         }
       ];
-      fetchData(...expected);
+      fetchData('people');
       expect(window.fetch).toHaveBeenCalledWith(url);
     });
 
@@ -204,9 +205,9 @@ describe('firstFetch', () => {
     beforeEach(() => {
       mockEvent = jest.fn();
       mockState = [{
-        species: "human" }];
+        name: "Human"}];
       mockSpecies = { 
-        species: "human" };
+        name: "Human"};
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
@@ -234,7 +235,7 @@ describe('firstFetch', () => {
     it('should return an object if the response is ok', async () => {
       expected = mockSpecies;
       const result = await fetchSpecies(url);
-      expect(result).toEqual(expected);
+      expect(result).toEqual(expected.name);
     });
 
     it('should throw an error if the fetch fails', async () => {
@@ -266,8 +267,7 @@ describe('firstFetch', () => {
       let mockEvent = jest.fn();
       mockState = [{
         Residents: "Wicket Systri Warrick" }];
-      mockResidents = { 
-        Residents: "Wicket Systri Warrick" };
+      mockResidents = {name: "Wicket Systri Warrick"};
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
@@ -288,14 +288,15 @@ describe('firstFetch', () => {
           }
         }
       ];
-      fetchResidents(...expected);
+      fetchResidents(expected);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
     });
 
     it('should return an object if the response is ok', async () => {
-      expected = mockResidents;
+      url = ['https://swapi.co/api/Residents/1'];
+      expected = mockResidents
       const result = await fetchResidents(url);
-      expect(result).toEqual(expected);
+      expect(...result).toEqual(expected.name);
     });
 
     it('should throw an error if the fetch fails', async () => {
