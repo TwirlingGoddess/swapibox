@@ -1,6 +1,5 @@
 # SWAPIbox
 
-![Project Screenshot](https://github.com/Haub/swapibox/blob/master/Screen%20Shot%202018-08-27%20at%201.49.56%20PM.png)
 
  The point of this project was to take static data files and, using React, display the data to the page. Using Jest and Enzyme, we built a test suite for the application.
 
@@ -17,11 +16,11 @@ Stephanie Ospina [GitHub](https://github.com/sospinar21)
 
 ### Original comp:
 
-![Comp Spec](./src/assets/comp.png)  
+![Comp Spec](https://github.com/Haub/swapibox/blob/master/Screen%20Shot%202018-08-27%20at%201.53.16%20PM.png)  
 
 ### My design:
 
-![Project Screenshot](./src/assets/pic.png)
+![Project Screenshot](https://github.com/Haub/swapibox/blob/master/Screen%20Shot%202018-08-27%20at%201.49.56%20PM.png)
 
   
 
