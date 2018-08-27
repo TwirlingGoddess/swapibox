@@ -5,7 +5,7 @@ export const firstFetch = async (url) => {
     const reaction = await response.json();
     return await reaction;
   } catch (error) {
-      throw new Error(error.message);
+    throw new Error(error.message);
   }
 };
 
@@ -14,9 +14,9 @@ export const fetchData = async (value) => {
     const url = `https://swapi.co/api/${value}/`;
     const response = await fetch(url);
     const data = await response.json();
-  return data;
+    return data;
   } catch (error) {
-      throw new Error(error.message);
+    throw new Error(error.message);
   }
 };
 
@@ -30,7 +30,7 @@ export const fetchHome = async (url) => {
     };
     return homeObj;
   } catch (error) {
-      throw new Error(error.message);
+    throw new Error(error.message);
   }
 };
 
@@ -40,7 +40,7 @@ export const fetchSpecies = async (url) => {
     const speciesData = await response.json();
     return speciesData.name;
   } catch (error) {
-      throw new Error(error.message);
+    throw new Error(error.message);
   }
 };
 
@@ -54,6 +54,6 @@ export const fetchResidents = (urlArray) => {
     });
     return Promise.all(residentNames);
   } catch (error) {
-      throw new Error(error.message);
+    throw new Error(error.message);
   }
 };

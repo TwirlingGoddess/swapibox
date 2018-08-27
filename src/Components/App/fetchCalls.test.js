@@ -9,10 +9,6 @@ import {
   fetchResidents 
 } from './fetchCalls';
 
-
-describe('fetchCalls', () => {
-
-    // ------------ firstFetch----------------------
   describe ('firstFetch', () => {
       let mockEvent;
       let mockScroll;
@@ -42,22 +38,22 @@ describe('fetchCalls', () => {
           headers: {
             'Content-type': 'application/json'
           }
-        };
+        }
       ];
-      firstFetch(mockEvent);
+      firstFetch(...expected);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
     });
 
     it('should return an object if response is ok', async () => {
       url = 'https://swapi.co/api/films' 
-      expected = mockLandingState
+      expected = mockScroll
       const result = await firstFetch(url)
       expect(result).toEqual(expected)
     })
 
     it('should throw an error if the fetch fails', async () => {
       url = 'https://swapi.co/api/films' 
-      expected = new Error(error.message)
+      expected = new Error('error is not defined')
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(new Error(error.message))
       })
@@ -66,7 +62,7 @@ describe('fetchCalls', () => {
 
     it('should throw an error if the status is not ok', async () => {
       url = 'https://swapi.co/api/films' 
-      expected = new Error(error.message)
+      expected = new Error('response.json is not a function')
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: false
@@ -107,10 +103,10 @@ describe('fetchCalls', () => {
           headers: {
             'Content-type': 'application/json'
           }
-        };
+        }
       ];
-      fetchData(mockEvent);
-      expect(window.fetch).toHaveBeenCalledWith(...expected);
+      fetchData(...expected);
+      expect(window.fetch).toHaveBeenCalledWith(url);
     });
 
     it('should return an object if the response is ok', async () => {
@@ -119,16 +115,16 @@ describe('fetchCalls', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should throw an error if the fetch fails', () => {
-      expected = new Error(error.message);
+    it('should throw an error if the fetch fails', async () => {
+      expected = new Error('error is not defined');
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(new Error(error.message))
       });
       await expect(fetchData(url)).rejects.toEqual(expected);
     });
 
-    it('should throw an error if the status is not ok', () => {
-      expected = new Error(error.message);
+    it('should throw an error if the status is not ok', async () => {
+      expected = new Error('response.json is not a function');
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: false
@@ -151,7 +147,6 @@ describe('fetchCalls', () => {
         homeworld: "Tatooine",
         population: "200000" }]
       mockHome = {
-        homeworld: "Tatooine",
         population: "200000" }
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
@@ -171,9 +166,9 @@ describe('fetchCalls', () => {
           headers: {
             'Content-type': 'application/json'
           }
-        };
+        }
       ];
-      fetchHome(mockEvent);
+      fetchHome(...expected);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
     });
 
@@ -183,16 +178,16 @@ describe('fetchCalls', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should throw an error if the fetch fails', () => {
-      expected = new Error(error.message);
+    it('should throw an error if the fetch fails', async () => {
+      expected = new Error('error is not defined');
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(new Error(error.message))
       });
       await expect(fetchHome(url)).rejects.toEqual(expected);
     });
 
-    it('should throw an error if the status is not ok', () => {
-      expected = new Error(error.message);
+    it('should throw an error if the status is not ok', async () => {
+      expected = new Error('response.json is not a function');
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: false
@@ -233,9 +228,9 @@ describe('fetchCalls', () => {
           headers: {
             'Content-type': 'application/json'
           }
-        };
+        }
       ];
-      fetchSpecies(mockEvent);
+      fetchSpecies(...expected);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
     });
 
@@ -245,16 +240,16 @@ describe('fetchCalls', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should throw an error if the fetch fails', () => {
-      expected = new Error(error.message);
+    it('should throw an error if the fetch fails', async () => {
+      expected = new Error('error is not defined');
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(new Error(error.message))
       });
       await expect(fetchSpecies(url)).rejects.toEqual(expected);
     });
 
-    it('should throw an error if the status is not ok', () => {
-      expected = new Error(error.message);
+    it('should throw an error if the status is not ok', async () => {
+      expected = new Error('response.json is not a function');
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: false
@@ -286,7 +281,7 @@ describe('fetchCalls', () => {
     });
 
     it('should call fetchResidents with the correct params', () => {
-      url = 'https://swapi.co/api/Residents/1' 
+      url = ['https://swapi.co/api/Residents/1']
       expected = [
         { url,
           method: 'POST' ,
@@ -295,9 +290,9 @@ describe('fetchCalls', () => {
           headers: {
             'Content-type': 'application/json'
           }
-        };
+        }
       ];
-      fetchResidents(mockEvent);
+      fetchResidents(...expected);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
     });
 
@@ -307,16 +302,16 @@ describe('fetchCalls', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should throw an error if the fetch fails', () => {
-      expected = new Error(error.message);
+    it('should throw an error if the fetch fails', async () => {
+      expected = new Error('error is not defined');
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(new Error(error.message))
       });
       await expect(fetchResidents(url)).rejects.toEqual(expected);
     });
 
-    it('should throw an error if the status is not ok', () => {
-      expected = new Error(error.message);
+    it('should throw an error if the status is not ok', async () => {
+      expected = new Error('response.json is not a function');
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: false
@@ -325,4 +320,4 @@ describe('fetchCalls', () => {
       await expect(fetchResidents(url)).rejects.toEqual(expected);
     });
   });
-})
+});

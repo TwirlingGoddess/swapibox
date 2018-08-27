@@ -20,9 +20,8 @@ class Landing extends Component {
       this.setState({
         scrollText: newVariable[Math.floor(Math.random() * reaction.results.length)]
       });
-      console.log(this.state.scrollText.text)
     } catch (error){
-        throw new Error(error.message);
+      throw new Error(error.message);
     }
   }
 
@@ -39,7 +38,9 @@ class Landing extends Component {
   render() {
     const { year, title, text } = this.state.scrollText;
     return (
-      <div onClick={this.props.removeLanding}>
+      <div 
+        onClick={this.props.removeLanding}
+        className='landing'>
         <div className="fade"></div>
         <article className="star-wars">
           <div className="crawl">

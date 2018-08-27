@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import CategoryContainer from '../CategoryContainer/CategoryContainer';
 import { shallow } from 'enzyme';
 
 describe('App', () => {
@@ -16,12 +17,21 @@ describe('App', () => {
   });
 
   it('should invoke populateCards when a button is pressed', () => {
-    let mockPopulate = jest.fn();
-    wrapper.find('.button-box').simulate('click');
-    expect().toHaveBeenCalled();
+    const spy = spyOn(wrapper.instance(), 'mockPopulate')
+    wrapper.instance().forceUpdate();
+    const mockEvent = {
+      homeworld: "Tatooine",
+      id: 1135694282614.0696,
+      name: "Luke Skywalker",
+      population: "200000",
+      species: "Human",
+      type: "people" };
+    wrapper.find('.button-box').simulate('click', mockEvent);
+    expect(spy).toHaveBeenCalled();
   });
 
   it('should render the category container with the correct props', () => {
+    
     expect(wrapper.find(CategoryContainer).prop('stateArray')).toEqual([]);
     expect(wrapper.find(CategoryContainer).prop('addToFavorites')).toEqual(wrapper.instance().addToFavorites);
   });
@@ -42,7 +52,7 @@ describe('App', () => {
       population: "200000",
       species: "Human",
       type: "people" }];
-    Date.now() * Math.random() = jest.fn().mockImplementation(() => 1135694282614.0696);
+    // Date.now() * Math.random() = jest.fn().mockImplementation(() => 1135694282614.0696);
     wrapper.setState({ displayedCards: initialState });
     wrapper.instance().populateCards(mockCategory);
     expect(wrapper.state('displayedCards')).toEqual(expected);
@@ -50,10 +60,10 @@ describe('App', () => {
   });
 
   it('should return an array of people when filterPeople is invoked', () => {
-    mockInput = [{
+    const mockInput = [{
       name: "Luke Skywalker",
       species: "https://swapi.co/api/species/1/",
-      homeworld: "https://swapi.co/api/planets/1/",
+      homeworld: "https://swapi.co/api/planets/1/"
     }];
     expected = [{
       homeworld: "Tatooine",
@@ -62,12 +72,13 @@ describe('App', () => {
       population: "200000",
       species: "Human",
       type: "people" }];
-    expect.instance().filterPeople().toHaveBeenCalledWith(mockInput);
+    wrapper.instance().filterPeople();
+    expect(filterPeople).toHaveBeenCalledWith(mockInput);
     expect(wrapper.state('people')).toEqual(expected)
   });
 
   it('should return an array of planets when filterPlanets is invoked', () => {
-    mockInput = [{
+    const mockInput = [{
       climate: "temperate",
       name: "Alderaan",
       population: "2000000000",
@@ -88,12 +99,12 @@ describe('App', () => {
         "Raymus Antilles" ],
       terrain: "grasslands, mountains",
       type: "planets" }];
-    expect.instance().filterPlanets().toHaveBeenCalledWith(mockInput);
-    expect(wrapper.state('planets')).toEqual(expected)
+    wrapper.instance().filterPlanets().toHaveBeenCalledWith(mockInput);
+    expect(wrapper.state('planets')).toEqual(expected);
   });
 
   it('should return an array of vehicles when filterVehicles is invoked', () => {
-    mockInput = [{
+    const mockInput = [{
       name: "Sand Crawler",
       passengers: "30",
       vehicle_class: "wheeled",
@@ -106,14 +117,15 @@ describe('App', () => {
       passengers: "30",
       type: "vehicles",
       vehicleClass: "wheeled" }];
-    expect.instance().filterVehicles().toHaveBeenCalledWith(mockInput);
+    wrapper.instance().filterVehicles(mockInput);
+    expect(filterVehicles).toHaveBeenCalledWith(mockInput);
     expect(wrapper.state('vehicles')).toEqual(expected);
   });
 
   it('should update state when removeLanding function is invoked', () => {
     const initialState = true;
     expected = false;
-    wrapper.find('.fade').simulate('click');
+    wrapper.find('.landing').simulate('click');
     expect(removeLanding).toHaveBeenCalled();
     expect(wrapper.state('landing')).toEqual(expected);
   });
@@ -143,47 +155,50 @@ describe('App', () => {
 
   it('should check the state of favorites for duplicates when checkDuplicates is invoked', () => {
     const mockParam = "Sand Crawler";
-    const initialState = [{
-      id: 105989059159.61761,
-      model: "Digger Crawler",
-      name: "Sand Crawler",
-      passengers: "30",
-      type: "vehicles",
-      vehicleClass: "wheeled" }, {
-      id: 105989059159.61761,
-      model: "Digger Crawler",
-      name: "Sand Crawler",
-      passengers: "30",
-      type: "vehicles",
-      vehicleClass: "wheeled" }];];
+    const initialState = [
+      {
+        id: 105989059159.61761,
+        model: "Digger Crawler",
+        name: "Sand Crawler",
+        passengers: "30",
+        type: "vehicles",
+        vehicleClass: "wheeled" 
+      }, 
+      {
+        id: 105989059159.61761,
+        model: "Digger Crawler",
+        name: "Sand Crawler",
+        passengers: "30",
+        type: "vehicles",
+        vehicleClass: "wheeled" 
+      }
+    ];
     expected = [];
     wrapper.setState({ favorites: initialState });
-    wrapper.instance().checkDuplicates(mockParam);
-    expect(checkDuplicates).toHaveBeenCalledWith(mockParam);
+    wrapper.instance().checkDuplicate(mockParam);
+    expect(checkDuplicate).toHaveBeenCalledWith(mockParam);
     expect(wrapper.state(favorites)).toEqual(expected);
   });
 
   it('should invoke displayFavorites when a favorites button is pressed', () => {
     wrapper.find('.button-box').simulate('click');
+    wrapper.instance().displayFavorites();
     expect(displayFavorites).toHaveBeenCalled();
   });
 
-  it('should update state when displayFavorites is invoked', () => {
+  it.only('should update state when displayFavorites is invoked and favorites array is empty', () => {
     const initialState = [];
     expected = [{
-      homeworld: "Tatooine",
-      id: 1135694282614.0696,
-      name: "Luke Skywalker",
-      population: "200000",
-      species: "Human",
-      type: "people" }]
+      "name": "YOU HAVE NO FAVORITES",
+      "type": "error" 
+    }]
     wrapper.setState({ favorites: initialState });
     wrapper.instance().displayFavorites();
-    expect(wrapper.state(displayedCards)).toEqual(expected);
+    expect(wrapper.state('displayedCards')).toEqual(expected);
   });
 });
 
-
+//add button click with addToFavorites.toHaveBeenCalled()
 
 
 
