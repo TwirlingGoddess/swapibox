@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
 import CategoryContainer from '../CategoryContainer/CategoryContainer';
-import { shallow } from 'enzyme';
+import { shallow} from 'enzyme';
 
 describe('App', () => {
   let wrapper;
@@ -17,23 +16,23 @@ describe('App', () => {
   });
 
   it('should invoke populateCards when a button is pressed', () => {
-    const spy = spyOn(wrapper.instance(), 'mockPopulate')
+    const spy = jest.spyOn(wrapper.instance(), 'mockPopulate');
     wrapper.instance().forceUpdate();
-    const mockEvent = {
+    const mockEvent = { target: {value: {
       homeworld: "Tatooine",
       id: 1135694282614.0696,
       name: "Luke Skywalker",
       population: "200000",
       species: "Human",
-      type: "people" };
+      type: "people" }}};
     wrapper.find('.button-box').simulate('click', mockEvent);
     expect(spy).toHaveBeenCalled();
   });
 
   it('should render the category container with the correct props', () => {
-    
     expect(wrapper.find(CategoryContainer).prop('stateArray')).toEqual([]);
-    expect(wrapper.find(CategoryContainer).prop('addToFavorites')).toEqual(wrapper.instance().addToFavorites);
+    expect(wrapper.find(CategoryContainer).prop('addToFavorites'))
+      .toEqual(wrapper.instance().addToFavorites);
   });
 
   it('should update state when populateCards is invoked', () => {
@@ -74,7 +73,7 @@ describe('App', () => {
       type: "people" }];
     wrapper.instance().filterPeople();
     expect(filterPeople).toHaveBeenCalledWith(mockInput);
-    expect(wrapper.state('people')).toEqual(expected)
+    expect(wrapper.state('people')).toEqual(expected);
   });
 
   it('should return an array of planets when filterPlanets is invoked', () => {
@@ -85,7 +84,7 @@ describe('App', () => {
       residents: [
         "https://swapi.co/api/people/5/",
         "https://swapi.co/api/people/68/",
-        "https://swapi.co/api/people/81/" ],
+        "https://swapi.co/api/people/81/"],
       terrain: "grasslands, mountains"
     }];
     expected = [{
@@ -96,41 +95,41 @@ describe('App', () => {
       residents: [
         "Leia Organa",
         "Bail Prestor Organa",
-        "Raymus Antilles" ],
+        "Raymus Antilles"],
       terrain: "grasslands, mountains",
       type: "planets" }];
     wrapper.instance().filterPlanets().toHaveBeenCalledWith(mockInput);
     expect(wrapper.state('planets')).toEqual(expected);
   });
 
-  it('should return an array of vehicles when filterVehicles is invoked', () => {
-    const mockInput = [{
-      name: "Sand Crawler",
-      passengers: "30",
-      vehicle_class: "wheeled",
-      model: "Digger Crawler",
-    }];
-    expected = [{
-      id: 105989059159.61761,
-      model: "Digger Crawler",
-      name: "Sand Crawler",
-      passengers: "30",
-      type: "vehicles",
-      vehicleClass: "wheeled" }];
-    wrapper.instance().filterVehicles(mockInput);
-    expect(filterVehicles).toHaveBeenCalledWith(mockInput);
-    expect(wrapper.state('vehicles')).toEqual(expected);
-  });
+  it('should return an array of vehicles when filterVehicles is invoked', 
+    () => {
+      const mockInput = [{
+        name: "Sand Crawler",
+        passengers: "30",
+        vehicleClass: "wheeled",
+        model: "Digger Crawler"
+      }];
+      expected = [{
+        id: 105989059159.61761,
+        model: "Digger Crawler",
+        name: "Sand Crawler",
+        passengers: "30",
+        type: "vehicles",
+        vehicleClass: "wheeled" }];
+      wrapper.instance().filterVehicles(mockInput);
+      expect(filterVehicles).toHaveBeenCalledWith(mockInput);
+      expect(wrapper.state('vehicles')).toEqual(expected);
+    });
 
   it('should update state when removeLanding function is invoked', () => {
-    const initialState = true;
     expected = false;
     wrapper.find('.landing').simulate('click');
     expect(removeLanding).toHaveBeenCalled();
     expect(wrapper.state('landing')).toEqual(expected);
   });
 
-  it('should update state when addToFavorites is invoked', () => {
+  it.only('should update state when addToFavorites is invoked', () => {
     const initialState = [];
     const mockFavorite = [{
       id: 105989059159.61761,
@@ -186,19 +185,19 @@ describe('App', () => {
     expect(displayFavorites).toHaveBeenCalled();
   });
 
-  it.only('should update state when displayFavorites is invoked and favorites array is empty', () => {
+  it('should update state when displayFavorites is invoked and favorites array is empty', () => {
     const initialState = [];
     expected = [{
       "name": "YOU HAVE NO FAVORITES",
       "type": "error" 
-    }]
+    }];
     wrapper.setState({ favorites: initialState });
     wrapper.instance().displayFavorites();
     expect(wrapper.state('displayedCards')).toEqual(expected);
   });
 });
 
-//add button click with addToFavorites.toHaveBeenCalled()
+
 
 
 

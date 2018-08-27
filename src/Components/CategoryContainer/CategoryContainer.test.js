@@ -1,6 +1,6 @@
 import React from 'react';
 import { CategoryContainer } from './CategoryContainer';
-import { Card } from '../Card/Card';
+// import { Card } from '../Card/Card';
 import { shallow } from 'enzyme';
 
 describe('CategoryContainer', () => {
@@ -10,8 +10,11 @@ describe('CategoryContainer', () => {
 
   beforeEach(() => {
     mockToggleFavorite = jest.fn();
-    mockCardsList = [{name: 'Luke Skywalker', species: 'human', homeworld: 'Tatooine', population: '200000'}, 
-                    {name: 'Leia Organa', species: 'human', homeworld: 'Alderaan', population: '2000000000'}]
+    mockCardsList = 
+    [
+      {name: 'Luke Skywalker', species: 'human', homeworld: 'Tatooine', population: '200000'}, 
+      {name: 'Leia Organa', species: 'human', homeworld: 'Alderaan', population: '2000000000'}
+    ];
     wrapper = shallow(<CategoryContainer stateArray={mockCardsList} />);
   });
 
@@ -30,4 +33,4 @@ describe('CategoryContainer', () => {
     expect(mockToggleFavorite).toHaveBeenCalled();
   });
 
-})
+});
