@@ -10,15 +10,16 @@
 
 [create-react-app](https://github.com/facebookincubator/create-react-app) boilerplate.
 
-### Author:
+### Project Authors:
 
-Stephanie Ospina [GitHub](https://github.com/sospinar21)  
+Lee Graham [GitHub](https://github.com/TwirlingGoddess)  
+Megan Haub [GitHub](https://github.com/Haub)
 
 ### Original comp:
 
 ![Comp Spec](https://github.com/Haub/swapibox/blob/master/Screen%20Shot%202018-08-27%20at%201.53.16%20PM.png)  
 
-### My design:
+### Our design:
 
 ![Project Screenshot](https://github.com/Haub/swapibox/blob/master/Screen%20Shot%202018-08-27%20at%201.49.56%20PM.png)
 
