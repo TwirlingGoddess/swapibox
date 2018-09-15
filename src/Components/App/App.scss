@@ -8,7 +8,9 @@
 .App {
   overflow:scroll;
   height: 100vh;
-  background-image: radial-gradient(grey, orange, lightpink);
+  background-image: radial-gradient(grey, orange, lightpink);  
+  background-image: url('https://media.giphy.com/media/Gt6cZl4PoNOla/giphy.gif');
+  background-size: cover;
 }
 
 .header {
